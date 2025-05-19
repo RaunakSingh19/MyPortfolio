@@ -1,0 +1,26 @@
+/* Home.css */
+
+.home-container {
+  background-color: #000; /* black */
+  color: #fff; /* white */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.home-heading {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #e0e0e0; /* light gray */
+  margin-bottom: 1rem;
+}
+
+.home-description {
+  font-size: 1.25rem;
+  color: #b0b0b0; /* soft gray */
+  max-width: 600px;
+}
