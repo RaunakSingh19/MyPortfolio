@@ -60,6 +60,7 @@
 /* Hide menu icon on desktop, show on mobile */
 .menu-icon {
   display: none !important;
+  /* background: #000; */
 }
 
 /* Hide nav links and cta on mobile, show hamburger */
@@ -67,6 +68,7 @@
   .nav-links,
   .nav-cta {
     display: none !important;
+    
   }
   .menu-icon {
     display: block !important;

@@ -1,0 +1,162 @@
+.dashboard-container {
+  min-height: 100vh;
+  background: #16181d;
+  padding: 2rem 0;
+}
+
+.dashboard-content {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #23252b;
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+
+.dashboard-title {
+  color: #fff;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+  border-bottom: 2px solid #43e97b;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.dashboard-error-message {
+  color: #fff;
+  background: #b71c1c;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.dashboard-loading,
+.dashboard-noprojects {
+  color: #fff;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.dashboard-list {
+  margin-top: 2rem;
+}
+
+.dashboard-project {
+  background: #23252b;
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.09);
+  margin-bottom: 2.5rem;
+  padding: 1.5rem 1.5rem 1rem;
+  position: relative;
+}
+
+.dashboard-project h3 {
+  color: #43e97b;
+  margin-bottom: 0.3rem;
+}
+
+.dashboard-project-view p {
+  margin: 0.3rem 0 0.5rem 0;
+  color: #d4d7e0;
+}
+
+.dashboard-project-view a {
+  color: #43e97b;
+  text-decoration: underline;
+}
+
+.dashboard-form,
+.dashboard-project-view {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.dashboard-form-group label {
+  color: #43e97b;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.dashboard-form-group input,
+.dashboard-form-group textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #343641;
+  border-radius: 5px;
+  background: #23252b;
+  color: #fff;
+}
+
+.dashboard-form-group input[type="file"] {
+  padding: 0.25rem 0;
+  background: none;
+  color: #fff;
+}
+
+.dashboard-preview-container {
+  margin-top: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dashboard-image-preview img {
+  width: 130px;
+  height: auto;
+  border-radius: 5px;
+  border: 1px solid #43e97b;
+  margin-bottom: 0.3rem;
+}
+
+.dashboard-video-preview {
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.dashboard-form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.8rem;
+}
+
+.dashboard-form-actions button {
+  background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+  color: #16181d;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1.3rem;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.dashboard-form-actions button:disabled {
+  background: #2d2f36;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.dashboard-delete-btn {
+  background: linear-gradient(90deg, #ff5858 0%, #f09819 100%);
+  color: #fff !important;
+}
+
+.dashboard-form-actions .dashboard-delete-btn:disabled {
+  background: #861616;
+  color: #fff;
+}
+
+@media (max-width: 700px) {
+  .dashboard-content {
+    padding: 1rem 0.5rem;
+  }
+  .dashboard-project {
+    padding: 1rem 0.25rem 0.5rem;
+  }
+}

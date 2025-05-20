@@ -1,53 +1,3 @@
-// import React from "react";
-// import { Link, useNavigate } from "react-router-dom";
-// import { Box, Stack } from "@mui/material";
-// import GymLogo from "../assets/images/logo/3-removebg-preview (1).png";
-// import "../stylesheets/Navbar.css";
-// import ButtonComponent from "../components/ButtonComponent"; // import the reusable button
-
-// const Navbar = () => {
-//   const navigate = useNavigate();
-
-//   const handleJoinNowClick = () => {
-//     navigate("/Explore");
-//   };
-
-//   return (
-//     <Box
-//       sx={{
-//         backgroundColor: "#fff",
-//         position: "fixed",
-//         top: 0,
-//         left: 0,
-//         right: 0,
-//         zIndex: 10,
-//         padding: "0.8rem 2rem",
-//         display: "flex",
-//         alignItems: "center",
-//         justifyContent: "space-between",
-//         boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-//       }}
-//     >
-//       <Link to="/" className="nav-logo">
-//         <img src={GymLogo} alt="Logo" className="logo" />
-//       </Link>
-
-//       <Stack direction="row" spacing={3} className="nav-links">
-//         <Link to="/about" className="nav-link">ABOUT</Link>
-//         <Link to="/projects" className="nav-link">PROJECTS</Link>
-//         {/* <Link to="/membership" className="nav-link">MEMBERSHIP</Link> */}
-//         <Link to="/feedbackform" className="nav-link">FEEDBACK</Link>
-//         <Link to="/contact" className="nav-link">CONTACT</Link>
-//       </Stack>
-
-//       <Stack direction="row" alignItems="center" spacing={2}>
-//         <ButtonComponent label="Explore" onClick={handleJoinNowClick} />
-//       </Stack>
-//     </Box>
-//   );
-// };
-
-// export default Navbar;
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Box, Stack, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
@@ -60,7 +10,7 @@ import ButtonComponent from "../components/ButtonComponent";
 const NAV_LINKS = [
   { label: "ABOUT", path: "/about" },
   { label: "PROJECTS", path: "/projects" },
-  // { label: "MEMBERSHIP", path: "/membership" },
+  { label: "DASHBOARD", path: "/dashboard" },
   { label: "CONTACT", path: "/contact" },
    { label: "FEEDBACK", path: "/feedbackform" },
 ];
@@ -70,7 +20,7 @@ const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const handleJoinNowClick = () => {
-    navigate("/Explore");
+    navigate("/Admin");
     setDrawerOpen(false);
   };
 
@@ -91,7 +41,7 @@ const Navbar = () => {
 
       {/* Desktop Button */}
       <Stack direction="row" alignItems="center" spacing={2} className="nav-cta">
-        <ButtonComponent label="Explore" onClick={handleJoinNowClick} />
+        <ButtonComponent label="Admin" onClick={handleJoinNowClick} />
       </Stack>
 
       {/* Hamburger Menu Icon for Mobile */}
@@ -131,7 +81,7 @@ const Navbar = () => {
           ))}
           <ListItem disablePadding>
             <ListItemButton onClick={handleJoinNowClick}>
-              <ListItemText primary="Explore" />
+              <ListItemText primary="Admin" />
             </ListItemButton>
           </ListItem>
         </List>

@@ -45,6 +45,8 @@ import Home from "./pages/Home";
 import ProjectCard from "./pages/ProjectCard";
 import ProjectDetailPage from "./components/ProjectDetailPage";
 import About from "./pages/About";
+import Admin from "./pages/Admin";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -53,6 +55,8 @@ function App() {
       <Route path="/projects" element={<ProjectCard />} />
       <Route path="/projects/:id" element={<ProjectDetailPage />} />
       <Route path="/about" element={<About />} />
+      <Route path="/admin" element={<Admin />} />
+      <Route path="/dashboard" element={<Dashboard />} />
     </Routes>
   );
 }
