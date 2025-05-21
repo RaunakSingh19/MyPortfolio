@@ -1,162 +1,178 @@
-.dashboard-container {
+.dashboard-root {
   min-height: 100vh;
-  background: #16181d;
-  padding: 2rem 0;
+  background: #17181c;
+  padding: 2.5rem 1.5rem;
 }
 
-.dashboard-content {
-  max-width: 900px;
-  margin: 0 auto;
-  background: #23252b;
-  border-radius: 12px;
-  padding: 2rem 2.5rem;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-}
-
-.dashboard-title {
+.dashboard-main-title {
   color: #fff;
-  margin-bottom: 2rem;
-  font-size: 2rem;
-  text-align: center;
-  border-bottom: 2px solid #43e97b;
-  display: inline-block;
-  padding-bottom: 0.5rem;
-}
-
-.dashboard-error-message {
-  color: #fff;
-  background: #b71c1c;
-  padding: 1rem;
-  border-radius: 6px;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.dashboard-loading,
-.dashboard-noprojects {
-  color: #fff;
-  text-align: center;
-  font-size: 1.2rem;
-}
-
-.dashboard-list {
-  margin-top: 2rem;
-}
-
-.dashboard-project {
-  background: #23252b;
-  color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.09);
   margin-bottom: 2.5rem;
-  padding: 1.5rem 1.5rem 1rem;
-  position: relative;
+  font-size: 2.2rem;
+  text-align: center;
+  letter-spacing: 1px;
+  font-weight: 700;
 }
 
-.dashboard-project h3 {
-  color: #43e97b;
-  margin-bottom: 0.3rem;
+.project-card-redesign {
+  cursor: pointer;
+  border-radius: 18px !important;
+  background: linear-gradient(135deg, #222226 60%, #17181c 100%);
+  color: #fff !important;
+  box-shadow: 0 3px 18px 0 rgba(0,0,0,0.22);
+  transition: transform 0.13s, box-shadow 0.13s;
+  border: 1.5px solid #232323;
 }
 
-.dashboard-project-view p {
-  margin: 0.3rem 0 0.5rem 0;
-  color: #d4d7e0;
+.HR-LINE{
+  margin-bottom: 15px;
+  padding-top: 5px;
+}
+.project-card-redesign:hover {
+  transform: translateY(-5px) scale(1.022);
+  box-shadow: 0 7px 28px 0 #00000050;
+  border-color: #444;
 }
 
-.dashboard-project-view a {
-  color: #43e97b;
+.project-media-container {
+  background: #151515;
+  border-radius: 18px 18px 0 0;
+  overflow: hidden;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.project-card-media {
+  object-fit: cover;
+  width: 100%;
+  max-height: 180px;
+  min-height: 180px;
+  background: #232323;
+}
+
+.project-card-content {
+  padding: 1.2rem 1.2rem 1rem 1.2rem !important;
+}
+
+.project-card-title {
+  color: #fff;
+  font-size: 1.17rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.project-card-description {
+  color: #bdbdbd;
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+  min-height: 40px;
+}
+
+.project-card-link {
+  color: #00e6b8;
+  text-decoration: none;
+  font-weight: 500;
+  margin-right: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 1.03rem;
+  transition: color 0.15s;
+}
+.project-card-link:hover {
+  color: #fff;
   text-decoration: underline;
 }
 
-.dashboard-form,
-.dashboard-project-view {
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
+.project-detail-dialog {
+  background: #18191d !important;
+  color: #fff !important;
+  border-radius: 18px !important;
 }
-
-.dashboard-form-group label {
-  color: #43e97b;
-  font-weight: 500;
-  margin-bottom: 0.25rem;
-  display: block;
-}
-
-.dashboard-form-group input,
-.dashboard-form-group textarea {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #343641;
-  border-radius: 5px;
-  background: #23252b;
+.project-detail-title {
+  background: #191a1e;
   color: #fff;
+  font-weight: 700;
+  padding: 1rem 2rem 1rem 1.4rem;
+  border-radius: 18px 18px 0 0;
+  font-size: 1.33rem;
+  position: relative;
 }
-
-.dashboard-form-group input[type="file"] {
-  padding: 0.25rem 0;
-  background: none;
+.project-detail-content {
+  background: #18191d;
   color: #fff;
+  padding: 2rem 2rem 1rem 2rem !important;
 }
-
-.dashboard-preview-container {
-  margin-top: 0.7rem;
+.project-detail-media {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.3rem;
 }
-
-.dashboard-image-preview img {
-  width: 130px;
-  height: auto;
-  border-radius: 5px;
-  border: 1px solid #43e97b;
-  margin-bottom: 0.3rem;
+.project-detail-media img,
+.project-detail-media video {
+  width: 96%;
+  max-width: 540px;
+  max-height: 320px;
+  object-fit: contain;
+  border-radius: 13px;
+  background: #232323;
+  border: 2px solid #24262e;
 }
-
-.dashboard-video-preview {
-  color: #fff;
-  font-size: 0.95rem;
+.project-detail-desc {
+  color: #e0e0e0;
+  font-size: 1.13rem;
+  line-height: 1.6;
+  margin-bottom: 1.4rem;
+  font-weight: 400;
 }
-
-.dashboard-form-actions {
+.project-detail-actions {
+  background: #18191d;
+  border-radius: 0 0 18px 18px;
   display: flex;
+  justify-content: flex-end;
   gap: 1rem;
-  margin-top: 0.8rem;
+  padding: 1.2rem 2rem 1.2rem 1.4rem !important;
+}
+.project-detail-btn {
+  margin-right: 1rem;
 }
 
-.dashboard-form-actions button {
-  background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
-  color: #16181d;
-  border: none;
-  border-radius: 5px;
-  padding: 0.5rem 1.3rem;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 1rem;
-  transition: background 0.2s;
-}
-
-.dashboard-form-actions button:disabled {
-  background: #2d2f36;
-  color: #888;
-  cursor: not-allowed;
-}
-
-.dashboard-delete-btn {
-  background: linear-gradient(90deg, #ff5858 0%, #f09819 100%);
+.MuiDialog-paper.project-detail-dialog {
+  background: #18191d !important;
   color: #fff !important;
 }
 
-.dashboard-form-actions .dashboard-delete-btn:disabled {
-  background: #861616;
-  color: #fff;
+.MuiInputBase-root, .MuiInputLabel-root {
+  color: #fff !important;
+  background: #232323 !important;
+}
+
+.MuiInputLabel-root {
+  color: #aaa !important;
+}
+
+.MuiOutlinedInput-root {
+  color: #fff !important;
+  background: #232323 !important;
+  border-radius: 8px !important;
+}
+.MuiOutlinedInput-notchedOutline {
+  border-color: #444 !important;
+}
+
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #00e6b8 !important;
 }
 
 @media (max-width: 700px) {
-  .dashboard-content {
-    padding: 1rem 0.5rem;
+  .dashboard-root {
+    padding: 1rem 0.4rem;
   }
-  .dashboard-project {
-    padding: 1rem 0.25rem 0.5rem;
+  .project-detail-content {
+    padding: 1.2rem 0.7rem 0.5rem 0.7rem !important;
+  }
+  .project-detail-actions {
+    padding: 1rem 0.7rem 1rem 0.7rem !important;
   }
 }
