@@ -1,6 +1,7 @@
 /* AdminPage.css */
 
 .admin-container {
+  margin-top: 5%;
   background-color: #121212;
   min-height: 100vh;
   padding: 2rem;

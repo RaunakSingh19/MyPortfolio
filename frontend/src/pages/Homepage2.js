@@ -3,18 +3,18 @@ import '../stylesheets/HomePage2.css';
 import ProfilePic from "../assets/images/mypic1.png";
 
 const HomePage = () => {
-  const techStack = [
-    "JavaScript",
-    "React/Node.js",
-    "Python",
-    "Flutter",
-    "AWS",
-    "Docker",
-    "SQL",
-    "MongoDB",
-    "Firebase",
-    "Debuggin & Troubleshooting"
-  ];
+  // const techStack = [
+  //   "JavaScript",
+  //   "React/Node.js",
+  //   "Python",
+  //   "Flutter",
+  //   "AWS",
+  //   "Docker",
+  //   "SQL",
+  //   "MongoDB",
+  //   "Firebase",
+  //   "Debuggin & Troubleshooting"
+  // ];
 
 
   return (
@@ -150,18 +150,22 @@ const HomePage = () => {
             Hi, I’m <span className="highlight-name">Raunak Singh</span>
           </h1>
 
+          <b className="highlight-home">  I’m open to new opportunities, collaboration.</b>
+                  
+
           <p className="summary">
             I build full-stack apps, And having Networking & DevOps skills. Let’s craft
             scalable, secure tech together.
           </p>
+        
 
-          <div className="stack-wrapper">
+          {/* <div className="stack-wrapper">
             {techStack.map((tech, index) => (
               <span className="tech-tag" key={index}>
                 {tech}
               </span>
             ))}
-          </div>
+          </div> */}
 
           <div className="btn-group">
             <a href="contact" className="btn primary">

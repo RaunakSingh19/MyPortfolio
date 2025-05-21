@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { label: "PROJECTS", path: "/projects" },
   { label: "DASHBOARD", path: "/dashboard" },
   { label: "CONTACT", path: "/contact" },
-   { label: "FEEDBACK", path: "/feedbackform" },
+  //  { label: "FEEDBACK", path: "/feedbackform" },
 ];
 
 const Navbar = () => {

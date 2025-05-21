@@ -72,13 +72,26 @@ body {
   margin: 0;
 }
 
+.highlight-home{
+  margin-top: 5%;
+  margin-bottom: 5%;
+  color: #fff;
+  font-size: larger;
+  /* 
+  background: var(--dark-bg);
+backdrop-filter: var(--glass-blur);
+  padding: 1.0rem 1.05rem;
+  border-radius: 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.09); */
+}
+
 .highlight-name {
   color: var(--primary);
 }
 
 .summary {
   font-size: 1.15rem;
-  color: var(--text-muted);
+  color: #fff;
   line-height: 1.65;
   max-width: 600px;
   margin: 0;
@@ -154,6 +167,7 @@ body {
 }
 
 .glass-card {
+  margin-top: 10%;
   padding: 1.7rem;
   border-radius: 2rem;
   background: var(--card-bg);

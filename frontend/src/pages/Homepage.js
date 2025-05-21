@@ -1,102 +1,35 @@
-// // import React from "react";
-// // import "../stylesheets/HomePage.css";
-// // import ProfilePic from "../assets/images/mypic1.png";
-
-// // const HomePage = () => {
-// //   return (
-// //     <section className="home-container">
-// //       <div className="home-content">
-// //         <div className="home-text">
-// //           <div className="badge-wrapper">
-// //             <span className="badge">FULL-STACK DEVELOPER</span>
-// //             <span className="badge">DEVOPS | CCNA</span>
-// //           </div>
-
-// //           <h1 className="headline">
-// //             Hi, I’m Raunak Singh
-// //           </h1>
-// //           <p className="summary">
-// //             I build full-stack apps, automate cloud systems, and optimize infrastructure with strong networking & DevOps skills. Let’s craft scalable, secure tech together.
-// //           </p>
-
-// //           <div className="stack-wrapper">
-// //             {["JavaScript", "React/Node.js", "Python", "Flutter", "AWS", "Docker/K8s", "SQL", "MongoDB", "Firebase"].map((tech, i) => (
-// //               <span className="tech-tag" key={i}>{tech}</span>
-// //             ))}
-// //           </div>
-
-// //           <div className="btn-group">
-// //             <a href="#contact" className="btn primary">Get In Touch</a>
-// //             <a href="https://github.com/RaunakSingh19" target="_blank" rel="noopener noreferrer" className="btn secondary">GitHub</a>
-// //           </div>
-// //         </div>
-
-// //         <div className="home-image">
-// //           <div className="glass-card">
-// //             <img src={ProfilePic} alt="Raunak Singh" className="profile-pic" />
-// //           </div>
-// //         </div>
-// //       </div>
-
-// //       <div className="scroll-down">
-// //         <span>Scroll</span>
-// //         <div className="scroll-arrow"></div>
-// //       </div>
-// //     </section>
-// //   );
-// // };
-
-// // export default HomePage;
 // import React from "react";
-// // import "../stylesheets/HomePage.css";
 // import "../stylesheets/HomePage.css";
 // // import ProfilePic from "../assets/images/mypic1.png";
-// import ProfilePic from "../assets/images/mypic1.png";
 
 // const HomePage = () => {
+// const techStack = [
+//     "JavaScript",
+//     "React/Node.js",
+//     "Python",
+//     "Flutter",
+//     "AWS",
+//     "Docker",
+//     "SQL",
+//     "MongoDB",
+//     "Firebase",
+//     "Debuggin & Troubleshooting"
+//   ];
 //   return (
-//     <section className="home-container">
-//       <div className="home-content">
-//         <div className="home-text">
-//           <div className="badge-wrapper">
-//             <span className="badge">FULL-STACK DEVELOPER</span>
-//             <span className="badge">DEVOPS | CCNA</span>
-//           </div>
-
-//           <h1 className="headline">
-//             Hi, I’m <span className="highlight-name">Raunak Singh</span>
-//           </h1>
-//           <p className="summary">
-//             I build full-stack apps, automate cloud systems, and optimize infrastructure with strong networking & DevOps skills. Let’s craft scalable, secure tech together.
-//           </p>
-
-//           <div className="stack-wrapper">
-//             {["JavaScript", "React/Node.js", "Python", "Flutter", "AWS", "Docker/K8s", "SQL", "MongoDB", "Firebase"].map((tech, i) => (
-//               <span className="tech-tag" key={i}>{tech}</span>
+// <div><hr></hr><h1>hello</h1>
+//  <div className="stack-wrapper">
+//             {techStack.map((tech, index) => (
+//               <span className="tech-tag" key={index}>
+//                 {tech}
+//               </span>
 //             ))}
 //           </div>
+// </div>
 
-//           <div className="btn-group">
-//             <a href="#contact" className="btn primary">Get In Touch</a>
-//             <a href="https://github.com/RaunakSingh19" target="_blank" rel="noopener noreferrer" className="btn secondary">GitHub</a>
-//           </div>
-//         </div>
-
-//         <div className="home-image">
-//           <div className="glass-card">
-//             <img src={ProfilePic} alt="Raunak Singh" className="profile-pic" />
-//           </div>
-//         </div>
-//       </div>
-
-//       <div className="scroll-down">
-//         <span>Scroll</span>
-//         <div className="scroll-arrow"></div>
-//       </div>
-//     </section>
 //   );
 // };
 
+// // export default HomePage;
 // export default HomePage;
 
 import React from "react";
@@ -104,12 +37,57 @@ import "../stylesheets/HomePage.css";
 // import ProfilePic from "../assets/images/mypic1.png";
 
 const HomePage = () => {
+  const techStack = [
+    "JavaScript",
+    "React / Node.js",
+    "Python",
+    "Flutter",
+    "AWS",
+    "Docker",
+    "SQL",
+    "MongoDB",
+    "Firebase",
+    "Debugging & Troubleshooting",
+  ];
 
   return (
-<div><hr></hr><h1>hello</h1></div>
+    <div className="homepage-container">
+      <hr />
+      {/* 
+  <p className="home-description">
+    Hands on Experience in <b>web & software development <b>Also prior Knowledge in field of networking </b>networking, and DevOps</b>, I enjoy working on innovative and collaborative projects that solve real-world problems.
+  </p> */}
+      <p className="home-description">
+        {" "}
+        With hands-on experience in <b>web and software development</b>, as well
+        as a strong foundation in <b>Networking</b> and <b>DevOps</b>, I am
+        passionate about creating innovative, scalable solutions. My expertise
+        allows me to approach projects with both technical precision and a
+        collaborative mindset, ensuring successful outcomes. I thrive in dynamic
+        environments and enjoy working on projects that address real-world
+        challenges, helping businesses optimize their operations and achieve
+        their goals. My dedication to continuous learning and improvement drives
+        me to stay updated with the latest industry trends and technologies,
+        making me adaptable to evolving demands.{" "}
+      </p>
+
+      <p className="home-description">
+        {" "}
+        As both a team player and leader, I’ve successfully led several projects
+        and programs in college, guiding teams to achieve shared goals while
+        maintaining a cooperative and efficient atmosphere.{" "}
+      </p>
+
+      <h2 className="stack-heading">💻 Tech Stack</h2>
+      <div className="stack-wrapper">
+        {techStack.map((tech, index) => (
+          <span className="tech-tag" key={index}>
+            {tech}
+          </span>
+        ))}
+      </div>
+    </div>
   );
 };
 
-// export default HomePage;
 export default HomePage;
-

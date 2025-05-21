@@ -1,0 +1,103 @@
+.contact-container {
+  margin-top: 5%;
+  background-color: #0F0F0F;
+  color: #ffffff;
+  padding: 60px 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.contact-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center; /* Changed from flex-start to center for better alignment */
+}
+
+.contact-text {
+  flex: 1;
+  min-width: 320px;
+}
+
+.headline {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.highlight-name {
+  color: #4f46e5;
+}
+
+.contact-description {
+  font-size: 1.1rem;
+  color: #cccccc;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.contact-details p {
+  font-size: 1rem;
+  margin: 10px 0;
+  color: #eeeeee;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-details a {
+  color: #4f46e5;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.contact-details a:hover {
+  text-decoration: underline;
+  color: #4f46e5;
+}
+
+/* Profile Image Section - Made smaller */
+.contact-image-wrapper {
+  flex: 1;
+  min-width: 280px; /* Reduced from 320px */
+  display: flex;
+  justify-content: center;
+}
+
+.contact-profile-image {
+  width: 400px; /* Fixed width instead of 100% */
+  height: 500px; /* Fixed height to make it square */
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.1);
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Map Section */
+.contact-map-wrapper {
+  margin-top: 40px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.1);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .contact-content {
+    flex-direction: column;
+  }
+  
+  .contact-profile-image {
+    width: 240px;
+    height: 240px;
+  }
+  
+  .headline {
+    font-size: 2rem;
+  }
+}
