@@ -124,6 +124,7 @@ const About = () => {
                 <h3 className="skill-title">Cloud & DevOps</h3>
                 <div className="tags">
                   <span className="tag">Docker</span>
+                  <span className="tag">CCNA</span>
                   <span className="tag">Kubernetes</span>
                   <span className="tag">AWS</span>
                   <span className="tag">CI/CD</span>

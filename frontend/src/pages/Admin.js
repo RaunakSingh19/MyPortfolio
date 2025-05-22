@@ -204,7 +204,7 @@ export default function AdminPage() {
             />
           </div>
 
-          <div className="form-group">
+          {/* <div className="form-group">
             <label>
               Media File (image or video, max 15MB) *
             </label>
@@ -234,7 +234,46 @@ export default function AdminPage() {
                 )}
               </div>
             )}
+          </div> */}
+          <div className="form-group">
+            <label>
+              Media File (image or video, max 15MB) *
+            </label>
+            <div className="file-upload-wrapper">
+              <label className="file-upload-label">
+                <input
+                  type="file"
+                  onChange={handleFileChange}
+                  accept="image/*,video/*"
+                  required
+                  className="file-upload-input"
+                />
+                <div className="file-upload-content">
+                  {preview ? (
+                    preview === 'video' ? (
+                      <div className="video-preview">
+                        <p>Video selected: {file.name}</p>
+                      </div>
+                    ) : (
+                      <div className="image-preview">
+                        <img src={preview} alt="Preview" />
+                        <span>{file.name}</span>
+                      </div>
+                    )
+                  ) : (
+                    <>
+                      <svg className="upload-icon" viewBox="0 0 24 24">
+                        <path d="M19 13a1 1 0 0 0-1 1v.38l-1.48-1.48a2.79 2.79 0 0 0-3.93 0l-.7.7-2.48-2.48a2.85 2.85 0 0 0-3.93 0L4 12.6V7a1 1 0 0 1 1-1h7a1 1 0 1 0 0-2H5a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3v-5a1 1 0 0 0-1-1zM5 20a1 1 0 0 1-1-1v-3.57l2.9-2.9a.79.79 0 0 1 1.09 0l3.17 3.17 4.3 4.3zm13-1a1 1 0 0 1-.18.53L13.31 15l.7-.7a.77.77 0 0 1 1.1 0L18 17.21zm0-14.1a1.1 1.1 0 1 0-1.1 1.1 1.1 1.1 0 0 0 1.1-1.1z"/>
+                      </svg>
+                      <p className="upload-text">Click to upload image or video</p>
+                      <p className="upload-hint">Max file size: 15MB</p>
+                    </>
+                  )}
+                </div>
+              </label>
+            </div>
           </div>
+          
 
           {uploadProgress > 0 && uploadProgress < 100 && (
             <div className="upload-progress">

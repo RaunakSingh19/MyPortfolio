@@ -20,6 +20,100 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
+/* File Upload Styles */
+.file-upload-wrapper {
+  margin-top: 0.5rem;
+}
+
+.file-upload-label {
+  display: block;
+  cursor: pointer;
+}
+
+.file-upload-input {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+
+.file-upload-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #2d2d2d;
+  border: 2px dashed #4b5563;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  min-height: 150px;
+  text-align: center;
+}
+
+.file-upload-content:hover {
+  border-color: #6366f1;
+  background-color: #333333;
+}
+
+.upload-icon {
+  width: 48px;
+  height: 48px;
+  fill: #6366f1;
+  margin-bottom: 1rem;
+}
+
+.upload-text {
+  color: #e0e0e0;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.upload-hint {
+  color: #9ca3af;
+  font-size: 0.8rem;
+}
+
+/* Preview styles (keep existing but add these enhancements) */
+.image-preview {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-preview img {
+  max-height: 200px;
+  max-width: 100%;
+  border-radius: 6px;
+  border: 1px solid #3d3d3d;
+  margin-bottom: 0.5rem;
+}
+
+.image-preview span {
+  background-color: rgba(30, 30, 30, 0.8);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.video-preview {
+  width: 100%;
+  padding: 1.5rem;
+  background-color: #2d2d2d;
+  border-radius: 8px;
+  text-align: center;
+  color: #d1d5db;
+}
+
+.video-preview p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
 .admin-title {
   font-size: 2rem;
   font-weight: 600;

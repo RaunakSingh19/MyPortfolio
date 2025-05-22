@@ -12,6 +12,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const projectRoutes = require('./routes/projectRoutes');
 
+const cookieParser = require('cookie-parser');
+const authRoutes = require('./routes/authRoutes');
+
 const app = express();
 
 // Verify required environment variables
@@ -24,15 +27,27 @@ if (missingVars.length > 0) {
 }
 
 // Enhanced CORS configuration
+// app.use(cors({
+//   origin: process.env.FRONTEND_URL || ['http://localhost:3000','http://localhost:5173'],
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+//   credentials: true
+// }));
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || ['http://localhost:3000','http://localhost:5173'],
+  origin: process.env.FRONTEND_URL || ['http://localhost:3000', 'http://localhost:5173'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token'],
+  credentials: true,
+  exposedHeaders: ['x-auth-token']
 }));
+
 
 app.use(express.json({ limit: '15mb' }));
 app.use(express.urlencoded({ extended: true, limit: '15mb' }));
+app.use(cookieParser());
+// app.use(cookieParser()); // After express.json()
+
 
 // API documentation endpoint
 app.get('/api', (req, res) => {
@@ -56,11 +71,15 @@ app.get('/', (req, res) => {
 
 // API routes
 app.use('/api/projects', projectRoutes);
+app.use('/api/auth', authRoutes);
+
 
 // 404 handler
 app.use((req, res) => {
   res.status(404).json({ error: 'Endpoint not found' });
 });
+
+// app.use('/api/auth', authRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
