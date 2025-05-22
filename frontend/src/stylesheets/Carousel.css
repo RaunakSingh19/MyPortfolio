@@ -1,0 +1,165 @@
+.react-swiper {
+  width: 100vw;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 0;
+  position: relative;
+  overflow: visible;
+}
+
+.react-swiper-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 450px;
+  gap: 20px;
+}
+
+.react-swiper-slide {
+  width: 340px;
+  height: 420px;
+  border-radius: 12px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.16);
+  transition: 
+    filter 0.4s ease,
+    opacity 0.4s ease,
+    transform 0.5s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-color: #111;
+}
+
+.react-swiper-slide.active {
+  filter: blur(0px);
+  opacity: 1;
+  z-index: 3;
+  transform: scale(1.08);
+}
+
+.react-swiper-slide.adjacent {
+  filter: blur(1px);
+  opacity: 0.8;
+  z-index: 2;
+  transform: scale(0.95);
+}
+
+.react-swiper-slide.hidden {
+  filter: blur(2px);
+  opacity: 0.5;
+  z-index: 1;
+  transform: scale(0.9);
+  pointer-events: none;
+}
+
+.slide-content {
+  padding: 0 25px 35px;
+  width: 100%;
+}
+
+.location-text {
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.location-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+}
+
+.carousel-controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.carousel-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-btn:hover {
+  background: #fff;
+  transform: scale(1.1);
+}
+
+.carousel-btn svg {
+  width: 24px;
+  height: 24px;
+  color: #333;
+}
+
+.react-swiper-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+  z-index: 3;
+}
+
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background: #fff;
+  transform: scale(1.2);
+}
+
+@media (max-width: 900px) {
+  .react-swiper-wrapper {
+    min-height: 320px;
+  }
+  .react-swiper-slide {
+    width: 250px;
+    height: 310px;
+  }
+}
+
+@media (max-width: 600px) {
+  .react-swiper-slide {
+    width: 90vw;
+    height: 250px;
+    margin: 0 7px;
+  }
+  
+  .carousel-btn {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .carousel-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+}
