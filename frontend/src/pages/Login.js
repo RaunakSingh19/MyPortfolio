@@ -51,10 +51,10 @@ const Login = ({ onLogin }) => {
         </button>
         {error && <div className="auth-message error-message">{error}</div>}
       </form>
-      <div className="auth-footer">
+      {/* <div className="auth-footer">
         Don't have an account? 
         <a href="/register" className="auth-link">Sign up</a>
-      </div>
+      </div> */}
     </div>
   );
 };
