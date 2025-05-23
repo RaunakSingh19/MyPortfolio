@@ -100,6 +100,8 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const router = express.Router();
+const verifyToken = require('../middleware/verifyToken');
+
 
 const JWT_SECRET = process.env.JWT_SECRET || 'fallback_secret';
 
@@ -190,6 +192,8 @@ router.post('/login', async (req, res) => {
     });
   }
 });
+
+// Authenticated user profile
 
 router.get('/me', verifyToken, async (req, res) => {
   try {
