@@ -142,9 +142,10 @@
 // export default ProjectCard;
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import api from "../utils/axios";
 import "../stylesheets/ProjectCard.css";
 
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "https://myportfolio-zn87.onrender.com";
+// const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "https://myportfolio-zn87.onrender.com";
 
 const ProjectCard = () => {
   const [projects, setProjects] = useState([]);
@@ -152,14 +153,25 @@ const ProjectCard = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+  // useEffect(() => {
+  //   fetch(`${API_BASE_URL}/projects`)
+  //     .then(res => {
+  //       if (!res.ok) throw new Error("Network response was not ok");
+  //       return res.json();
+  //     })
+  //     .then(data => {
+  //       setProjects(Array.isArray(data) ? data : []);
+  //       setLoading(false);
+  //     })
+  //     .catch((err) => {
+  //       setError(err.message || "Failed to fetch projects");
+  //       setLoading(false);
+  //     });
+  // }, []);
   useEffect(() => {
-    fetch(`${API_BASE_URL}/projects`)
+    api.get('/projects')
       .then(res => {
-        if (!res.ok) throw new Error("Network response was not ok");
-        return res.json();
-      })
-      .then(data => {
-        setProjects(Array.isArray(data) ? data : []);
+        setProjects(Array.isArray(res.data) ? res.data : []);
         setLoading(false);
       })
       .catch((err) => {

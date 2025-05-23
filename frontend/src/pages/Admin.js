@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
+import api from '../utils/axios';
 import { useNavigate } from 'react-router-dom';
 import '../stylesheets/Admin.css';
 
 // CHANGE THIS to your backend API URL or Cloudinary direct upload endpoint as needed
-const API_BASE_URL = 'http://localhost:5000/api'; // <-- Update as needed
+// const API_BASE_URL = 'http://localhost:5000/api'; // <-- Update as needed
 
 export default function AdminPage() {
   const [formData, setFormData] = useState({
@@ -58,6 +59,66 @@ export default function AdminPage() {
     }
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setError('');
+  //   setIsSubmitting(true);
+  //   setUploadProgress(0);
+
+  //   try {
+  //     if (!file) {
+  //       throw new Error('Please select a file to upload');
+  //     }
+
+  //     const formPayload = new FormData();
+  //     formPayload.append('title', formData.title);
+  //     formPayload.append('description', formData.description);
+  //     formPayload.append('techStack', formData.techStack);
+  //     formPayload.append('githubUrl', formData.githubUrl);
+  //     formPayload.append('liveDemo', formData.liveDemo);
+  //     formPayload.append('media', file);
+
+  //     const response = await axios.post(
+  //       `${API_BASE_URL}/projects`,
+  //       formPayload,
+  //       {
+  //         headers: {
+  //           'Content-Type': 'multipart/form-data'
+  //         },
+  //         onUploadProgress: (progressEvent) => {
+  //           if (progressEvent.total) {
+  //             const percentCompleted = Math.round(
+  //               (progressEvent.loaded * 100) / progressEvent.total
+  //             );
+  //             setUploadProgress(percentCompleted);
+  //           }
+  //         }
+  //       }
+  //     );
+
+  //     navigate('/', {
+  //       state: {
+  //         success: 'Project uploaded successfully!'
+  //       }
+  //     });
+  //   } catch (err) {
+  //     console.error('Upload error:', err);
+
+  //     let errorMessage = 'Upload failed. Please try again.';
+  //     if (err.response) {
+  //       errorMessage = err.response.data?.error ||
+  //         err.response.data?.message ||
+  //         errorMessage;
+  //     } else if (err.message) {
+  //       errorMessage = err.message;
+  //     }
+
+  //     setError(errorMessage);
+  //   } finally {
+  //     setIsSubmitting(false);
+  //     setUploadProgress(0);
+  //   }
+  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -77,8 +138,8 @@ export default function AdminPage() {
       formPayload.append('liveDemo', formData.liveDemo);
       formPayload.append('media', file);
 
-      const response = await axios.post(
-        `${API_BASE_URL}/projects`,
+      const response = await api.post(
+        '/projects',
         formPayload,
         {
           headers: {
@@ -102,7 +163,6 @@ export default function AdminPage() {
       });
     } catch (err) {
       console.error('Upload error:', err);
-
       let errorMessage = 'Upload failed. Please try again.';
       if (err.response) {
         errorMessage = err.response.data?.error ||
@@ -111,7 +171,6 @@ export default function AdminPage() {
       } else if (err.message) {
         errorMessage = err.message;
       }
-
       setError(errorMessage);
     } finally {
       setIsSubmitting(false);

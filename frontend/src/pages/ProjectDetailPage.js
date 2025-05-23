@@ -52,19 +52,29 @@
 // export default ProjectDetailPage;
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import api from "../utils/axios";
 
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "https://myportfolio-zn87.onrender.com";
+// const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "https://myportfolio-zn87.onrender.com";
 
 const ProjectDetailPage = () => {
   const { id } = useParams();
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // useEffect(() => {
+  //   fetch(`${API_BASE_URL}/projects`)
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       const found = Array.isArray(data) ? data.find(p => p.id === id) : null;
+  //       setProject(found);
+  //       setLoading(false);
+  //     })
+  //     .catch(() => setLoading(false));
+  // }, [id]);
   useEffect(() => {
-    fetch(`${API_BASE_URL}/projects`)
-      .then(res => res.json())
-      .then(data => {
-        const found = Array.isArray(data) ? data.find(p => p.id === id) : null;
+    api.get('/projects')
+      .then(res => {
+        const found = Array.isArray(res.data) ? res.data.find(p => p.id === id) : null;
         setProject(found);
         setLoading(false);
       })

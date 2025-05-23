@@ -168,12 +168,25 @@ const allowedOrigins = [
 //   exposedHeaders: ['x-auth-token'],
 //   credentials: true
 // }));
+// app.use(cors({
+//   origin: function (origin, callback) {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       console.error(`❌ Not allowed by CORS: ${origin}`);
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//   allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token'],
+//   exposedHeaders: ['x-auth-token'],
+//   credentials: true
+// }));
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      console.error(`❌ Not allowed by CORS: ${origin}`);
       callback(new Error('Not allowed by CORS'));
     }
   },

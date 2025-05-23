@@ -286,7 +286,8 @@
 
 // export default Dashboard;
 import React, { useEffect, useState} from 'react';
-import axios from 'axios';
+import api from '../utils/axios';
+// import axios from 'axios';
 import {
   Box, Button, Card, CardContent, CardMedia, Dialog, DialogActions,
   DialogContent, DialogTitle, Grid, IconButton, Typography, Tooltip, Slide,TextField
@@ -294,7 +295,7 @@ import {
 import { Delete, Edit, Launch } from '@mui/icons-material';
 import '../stylesheets/Dashboard.css';
 
-const API_URL = 'http://localhost:5000/api/projects';
+// const API_URL = 'http://localhost:5000/api/projects';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -311,13 +312,25 @@ const Dashboard = () => {
     liveDemo: ''
   });
 
+  // useEffect(() => {
+  //   fetchProjects();
+  // }, []);
+
+  // const fetchProjects = async () => {
+  //   try {
+  //     const res = await axios.get(API_URL);
+  //     setProjects(res.data);
+  //   } catch (error) {
+  //     console.error('Error fetching projects:', error);
+  //   }
+  // };
   useEffect(() => {
     fetchProjects();
   }, []);
 
   const fetchProjects = async () => {
     try {
-      const res = await axios.get(API_URL);
+      const res = await api.get('/projects');
       setProjects(res.data);
     } catch (error) {
       console.error('Error fetching projects:', error);
@@ -352,9 +365,19 @@ const Dashboard = () => {
     });
   };
 
+  // const handleUpdate = async () => {
+  //   try {
+  //     await axios.put(`${API_URL}/${selectedProject.id}`, formData);
+  //     setEditing(false);
+  //     fetchProjects();
+  //     setSelectedProject({ ...selectedProject, ...formData });
+  //   } catch (err) {
+  //     console.error('Error updating project:', err);
+  //   }
+  // };
   const handleUpdate = async () => {
     try {
-      await axios.put(`${API_URL}/${selectedProject.id}`, formData);
+      await api.put(`/projects/${selectedProject.id}`, formData);
       setEditing(false);
       fetchProjects();
       setSelectedProject({ ...selectedProject, ...formData });
@@ -363,10 +386,20 @@ const Dashboard = () => {
     }
   };
 
+  // const deleteProject = async (id, publicId) => {
+  //   if (!window.confirm('Are you sure you want to delete this project?')) return;
+  //   try {
+  //     await axios.delete(`${API_URL}/${id}`, { data: { publicId } });
+  //     fetchProjects();
+  //     closeProjectDetail();
+  //   } catch (err) {
+  //     console.error('Error deleting project:', err);
+  //   }
+  // };
   const deleteProject = async (id, publicId) => {
     if (!window.confirm('Are you sure you want to delete this project?')) return;
     try {
-      await axios.delete(`${API_URL}/${id}`, { data: { publicId } });
+      await api.delete(`/projects/${id}`);  // publicId not needed in body
       fetchProjects();
       closeProjectDetail();
     } catch (err) {
