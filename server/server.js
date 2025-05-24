@@ -147,11 +147,11 @@ if (missingVars.length > 0) {
 
 // ✅ Updated CORS configuration
 const allowedOrigins = [
- 'https://my-portfolio-five-nu-95.vercel.app',
-  'https://my-portfolio-five-mu-95.vercel.app',
-  'https://my-portfolio-i4hs8jesg-raunaksingh142004-gmailcoms-projects.vercel.app', // ✅ Add this
-  'http://localhost:3000',
-  'http://localhost:5173'
+  "https://my-portfolio-five-nu-95.vercel.app",
+  "https://my-portfolio-five-mu-95.vercel.app",
+  "https://my-portfolio-i4hs8jesg-raunaksingh142004-gmailcoms-projects.vercel.app",
+  "http://localhost:3000",
+  "http://localhost:5173"
 ];
 
 // app.use(cors({
@@ -182,20 +182,30 @@ const allowedOrigins = [
 //   exposedHeaders: ['x-auth-token'],
 //   credentials: true
 // }));
+// app.use(cors({
+//   origin: function (origin, callback) {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//   allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token'],
+//   exposedHeaders: ['x-auth-token'],
+//   credentials: true
+// }));
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      console.error(`❌ Not allowed by CORS: ${origin}`);
+      callback(new Error("Not allowed by CORS"));
     }
   },
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token'],
-  exposedHeaders: ['x-auth-token'],
   credentials: true
 }));
-
 
 app.use(express.json({ limit: '15mb' }));
 app.use(express.urlencoded({ extended: true, limit: '15mb' }));
