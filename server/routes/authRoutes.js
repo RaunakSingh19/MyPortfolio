@@ -446,70 +446,123 @@
 // });
 
 // module.exports = router;
+// const express = require("express");
+// const jwt = require("jsonwebtoken");
+// const router = express.Router();
+
+// const JWT_SECRET = process.env.JWT_SECRET || "fallback_secret";
+
+// // Static credentials
+// const STATIC_USER = {
+//   email: "raunaksingh142004@gmail.com",
+//   password: "raunak.v.xiao", // this should be strong in real apps
+//   name: "raunak"
+// };
+
+// router.post("/login", (req, res) => {
+//   const { email, password } = req.body;
+//   if (
+//     email !== STATIC_USER.email ||
+//     password !== STATIC_USER.password
+//   ) {
+//     return res.status(401).json({ error: "Invalid credentials" });
+//   }
+
+//   const token = jwt.sign({ id: "static", email: STATIC_USER.email }, JWT_SECRET, {
+//     expiresIn: "1d",
+//   });
+
+//   res
+//     .cookie("token", token, {
+//       httpOnly: true,
+//       secure: true, // true for HTTPS
+//       sameSite: "none",
+//       maxAge: 24 * 60 * 60 * 1000,
+//     })
+//     .json({
+//       message: "Login successful",
+//       user: {
+//         id: "static",
+//         name: STATIC_USER.name,
+//         email: STATIC_USER.email,
+//       },
+//     });
+// });
+
+// // /me endpoint using the token
+// const verifyToken = require("../middleware/verifyToken");
+// router.get("/me", verifyToken, (req, res) => {
+//   // Always return the static user (no DB)
+//   res.json({
+//     id: "static",
+//     name: STATIC_USER.name,
+//     email: STATIC_USER.email,
+//   });
+// });
+
+// // Logout as before
+// router.post("/logout", (req, res) => {
+//   res
+//     .clearCookie("token", {
+//       httpOnly: true,
+//       secure: true,
+//       sameSite: "none",
+//     })
+//     .status(200)
+//     .json({ message: "Logged out successfully" });
+// });
+
+// module.exports = router;
+
+// const express = require("express");
+// const router = express.Router();
+
+// // Change these to whatever credentials you want
+// const STATIC_USER = {
+//   email: "raunaksingh142004@gmail.com",
+//   password: "Palak" // set your password here
+// };
+
+// router.post("/login", (req, res) => {
+//   const { email, password } = req.body;
+//   if (email === STATIC_USER.email && password === STATIC_USER.password) {
+//     // On success, just return some data (no cookies, no JWT)
+//     return res.json({
+//       message: "Login successful",
+//       user: {
+//         email: STATIC_USER.email,
+//         name: "Raunak Singh"
+//       }
+//     });
+//   }
+//   return res.status(401).json({ error: "Invalid credentials" });
+// });
+
+// module.exports = router;
 const express = require("express");
-const jwt = require("jsonwebtoken");
 const router = express.Router();
 
-const JWT_SECRET = process.env.JWT_SECRET || "fallback_secret";
-
-// Static credentials
+// Static (predefined) credentials
 const STATIC_USER = {
-  email: "raunaksingh142004@gmail.com",
-  password: "raunak.v.xiao", // this should be strong in real apps
-  name: "raunak"
+  email: "admin@example.com",
+  password: "secure123", // Set any password you want
+  name: "Admin User"
 };
 
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
-  if (
-    email !== STATIC_USER.email ||
-    password !== STATIC_USER.password
-  ) {
-    return res.status(401).json({ error: "Invalid credentials" });
-  }
 
-  const token = jwt.sign({ id: "static", email: STATIC_USER.email }, JWT_SECRET, {
-    expiresIn: "1d",
-  });
-
-  res
-    .cookie("token", token, {
-      httpOnly: true,
-      secure: true, // true for HTTPS
-      sameSite: "none",
-      maxAge: 24 * 60 * 60 * 1000,
-    })
-    .json({
+  if (email === STATIC_USER.email && password === STATIC_USER.password) {
+    return res.json({
       message: "Login successful",
       user: {
-        id: "static",
-        name: STATIC_USER.name,
         email: STATIC_USER.email,
-      },
+        name: STATIC_USER.name
+      }
     });
-});
+  }
 
-// /me endpoint using the token
-const verifyToken = require("../middleware/verifyToken");
-router.get("/me", verifyToken, (req, res) => {
-  // Always return the static user (no DB)
-  res.json({
-    id: "static",
-    name: STATIC_USER.name,
-    email: STATIC_USER.email,
-  });
-});
-
-// Logout as before
-router.post("/logout", (req, res) => {
-  res
-    .clearCookie("token", {
-      httpOnly: true,
-      secure: true,
-      sameSite: "none",
-    })
-    .status(200)
-    .json({ message: "Logged out successfully" });
+  return res.status(401).json({ error: "Invalid credentials" });
 });
 
 module.exports = router;
