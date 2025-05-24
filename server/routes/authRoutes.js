@@ -544,7 +544,7 @@ const router = express.Router();
 
 // Static (predefined) credentials
 const STATIC_USER = {
-  email: "raunaksingh.com",
+  email: "raunaksingh@gmail.com",
   password: "raunak.raunak", // Set any password you want
   name: "Admin User"
 };
