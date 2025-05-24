@@ -148,6 +148,7 @@ if (missingVars.length > 0) {
 // ✅ Updated CORS configuration
 const allowedOrigins = [
   "https://my-portfolio-five-nu-95.vercel.app",
+  "https://my-portfolio-hwqp.vercel.app",
   "https://my-portfolio-i4hs8jesg-raunaksingh142004-gmailcoms-projects.vercel.app",
   "http://localhost:3000",
   "http://localhost:5173"
