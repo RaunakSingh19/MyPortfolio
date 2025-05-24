@@ -52,7 +52,7 @@
 // export default ProjectDetailPage;
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import api from "../utils/axios";
+import api from "../utils/axios.js";
 
 // const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "https://myportfolio-zn87.onrender.com";
 

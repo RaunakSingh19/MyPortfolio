@@ -1,3 +1,64 @@
+// import React from "react";
+// import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+// import Home from "./pages/Home";
+// import ProjectCard from "./components/ProjectCard";
+// import ProjectDetailPage from "./pages/ProjectDetailPage";
+// import About from "./pages/About";
+// import Admin from "./pages/Admin";
+// import Dashboard from "./pages/Dashboard";
+// import ContactPage from "./pages/ContactPage";
+// import Login from "./pages/Login";
+// import Register from "./pages/Register";
+// import { useAuth } from "./context/AuthContext"; // Use the context
+
+// function App() {
+//   const { user, loading, logout } = useAuth();
+//   const navigate = useNavigate();
+
+//   const RequireAuth = ({ children }) => {
+//     if (loading) return <div>Loading...</div>;
+//     if (!user) return <Navigate to="/login" replace />;
+//     return children;
+//   };
+
+//   const handleLogout = async () => {
+//     await logout();
+//     navigate("/login");
+//   };
+
+//   return (
+//     <>
+//       {/* Navbar can go here and receive user & handleLogout */}
+//       <Routes>
+//         <Route path="/" element={<Home />} />
+//         <Route path="/projects" element={<ProjectCard />} />
+//         <Route path="/projects/:id" element={<ProjectDetailPage />} />
+//         <Route path="/about" element={<About />} />
+//         <Route
+//           path="/admin"
+//           element={
+//             <RequireAuth>
+//               <Admin user={user} onLogout={handleLogout} />
+//             </RequireAuth>
+//           }
+//         />
+//         <Route
+//           path="/dashboard"
+//           element={
+//             <RequireAuth>
+//               <Dashboard user={user} onLogout={handleLogout} />
+//             </RequireAuth>
+//           }
+//         />
+//         <Route path="/contact" element={<ContactPage />} />
+//         <Route path="/login" element={<Login />} />
+//         <Route path="/register" element={<Register />} />
+//       </Routes>
+//     </>
+//   );
+// }
+
+// export default App;
 // import React, { useEffect, useState } from "react";
 // import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 // import Home from "./pages/Home";
@@ -97,8 +158,47 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React from "react";
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import ProjectCard from "./components/ProjectCard";
 import ProjectDetailPage from "./pages/ProjectDetailPage";
@@ -107,27 +207,17 @@ import Admin from "./pages/Admin";
 import Dashboard from "./pages/Dashboard";
 import ContactPage from "./pages/ContactPage";
 import Login from "./pages/Login";
-import Register from "./pages/Register";
-import { useAuth } from "./context/authcontext"; // Use the context
+
+function RequireAuth({ children }) {
+  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+  if (!isLoggedIn) return <Navigate to="/login" replace />;
+  return children;
+}
 
 function App() {
-  const { user, loading, logout } = useAuth();
-  const navigate = useNavigate();
-
-  const RequireAuth = ({ children }) => {
-    if (loading) return <div>Loading...</div>;
-    if (!user) return <Navigate to="/login" replace />;
-    return children;
-  };
-
-  const handleLogout = async () => {
-    await logout();
-    navigate("/login");
-  };
-
   return (
     <>
-      {/* Navbar can go here and receive user & handleLogout */}
+      {/* You can put your Navbar here if needed */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<ProjectCard />} />
@@ -137,7 +227,7 @@ function App() {
           path="/admin"
           element={
             <RequireAuth>
-              <Admin user={user} onLogout={handleLogout} />
+              <Admin />
             </RequireAuth>
           }
         />
@@ -145,13 +235,14 @@ function App() {
           path="/dashboard"
           element={
             <RequireAuth>
-              <Dashboard user={user} onLogout={handleLogout} />
+              <Dashboard />
             </RequireAuth>
           }
         />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        {/* 404 Route */}
+        <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </>
   );

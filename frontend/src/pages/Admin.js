@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // import axios from 'axios';
-import api from '../utils/axios';
+import api from '../utils/axios.js';
 import { useNavigate } from 'react-router-dom';
 import '../stylesheets/Admin.css';
 

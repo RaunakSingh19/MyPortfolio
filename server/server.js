@@ -132,7 +132,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const projectRoutes = require('./routes/projectRoutes');
 const cookieParser = require('cookie-parser');
-const authRoutes = require('./routes/authRoutes');
+// const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 
@@ -148,7 +148,6 @@ if (missingVars.length > 0) {
 // ✅ Updated CORS configuration
 const allowedOrigins = [
   "https://my-portfolio-five-nu-95.vercel.app",
-  "https://my-portfolio-five-mu-95.vercel.app",
   "https://my-portfolio-i4hs8jesg-raunaksingh142004-gmailcoms-projects.vercel.app",
   "http://localhost:3000",
   "http://localhost:5173"
@@ -158,6 +157,17 @@ app.use(cors({
   origin: 'https://my-portfolio-five-nu-95.vercel.app',
   credentials: true
 }));
+// app.use(cors({
+//   origin: function (origin, callback) {
+//     // allow requests with no origin (like mobile apps or curl requests)
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error("Not allowed by CORS"));
+//     }
+//   },
+//   credentials: true
+// }));
 
 // app.use(cors({
 //   origin: function (origin, callback) {
@@ -208,7 +218,7 @@ app.get('/', (req, res) => {
 
 // API routes
 app.use('/api/projects', projectRoutes);
-app.use('/api/auth', authRoutes);
+// app.use('/api/auth', authRoutes);
 
 // 404 handler
 app.use((req, res) => {

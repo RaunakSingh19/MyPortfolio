@@ -286,7 +286,7 @@
 
 // export default Dashboard;
 import React, { useEffect, useState} from 'react';
-import api from '../utils/axios';
+import api from '../utils/axios.js';
 // import axios from 'axios';
 import {
   Box, Button, Card, CardContent, CardMedia, Dialog, DialogActions,

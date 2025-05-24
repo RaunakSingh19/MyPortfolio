@@ -74,76 +74,54 @@
 // };
 
 // export default Login;
-
-
-
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../stylesheets/Auth.css';
-import { useAuth } from "../context/authcontext"; // import context
+
+const STATIC_EMAIL = 'raunaksingh@gmail.com';
+const STATIC_PASSWORD = 'raunak.raunak';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
-  const [error, setError] = useState(false);
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const { login } = useAuth();
-
-  const handleLogin = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setMessage('');
-    setError(false);
-
-    const result = await login({ email, password });
-
-    if (result.success) {
-      setMessage("Login successful!");
-      setError(false);
-      // navigation handled inside context
+    if (email === STATIC_EMAIL && password === STATIC_PASSWORD) {
+      localStorage.setItem('isLoggedIn', 'true');
+      navigate('/dashboard');
     } else {
-      setMessage(result.error || "Login failed.");
-      setError(true);
+      setError('Invalid email or password');
     }
   };
 
   return (
     <div className="auth-container">
-      <h2 className="auth-title">Login to Your Account</h2>
-
-      <form className="auth-form" onSubmit={handleLogin}>
+      <h2 className="auth-title">Admin Login</h2>
+      <form className="auth-form" onSubmit={handleSubmit}>
         <input
           className="auth-input"
           type="email"
           placeholder="Email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={e => setEmail(e.target.value)}
           required
         />
-
         <input
           className="auth-input"
           type="password"
           placeholder="Password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={e => setPassword(e.target.value)}
           required
         />
-
+        {error && <div className="auth-message error-message">{error}</div>}
         <button type="submit" className="auth-button">
           Login
         </button>
-
-        {message && (
-          <div className={`auth-message ${error ? 'error-message' : 'success-message'}`}>
-            {message}
-          </div>
-        )}
       </form>
-
-      <div className="auth-footer">
-        Don’t have an account?
-        <a href="/register" className="auth-link">Register</a>
-      </div>
     </div>
   );
 };
