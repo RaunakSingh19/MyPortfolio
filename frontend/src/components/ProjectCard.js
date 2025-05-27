@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import api from "../utils/axios";
 import "../stylesheets/ProjectCard.css";
 
-// const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "https://myportfolio-zn87.onrender.com";
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "https://myportfolio-zn87.onrender.com";
 
 const ProjectCard = () => {
   const [projects, setProjects] = useState([]);
@@ -93,3 +93,6 @@ const ProjectCard = () => {
 };
 
 export default ProjectCard;
+
+// -------------------------------------
+
