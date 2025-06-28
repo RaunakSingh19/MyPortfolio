@@ -126,7 +126,7 @@ if (missing.length > 0) {
 }
 
 // ========== Middleware ==========
-const allowedOrigins = ['http://localhost:3000', 'http://localhost:5173'];
+const allowedOrigins = ['http://localhost:3000','https://my-portfolio-five-ashy-23.vercel.app'];
 
 // app.use(cors({
 //   origin: allowedOrigins,
