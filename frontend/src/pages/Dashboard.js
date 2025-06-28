@@ -1,13 +1,12 @@
-import React, { useEffect, useState} from 'react';
-import api from '../utils/axios.js';
-// import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import {
   Box, Button, Card, CardContent, CardMedia, Dialog, DialogActions,
-  DialogContent, DialogTitle, Grid, IconButton, Typography, Tooltip, Slide,TextField
+  DialogContent, DialogTitle, Grid, IconButton, Typography, Tooltip, Slide, TextField
 } from '@mui/material';
 import { Delete, Edit, Launch } from '@mui/icons-material';
 import '../stylesheets/Dashboard.css';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000/api";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -24,28 +23,23 @@ const Dashboard = () => {
     liveDemo: ''
   });
 
-  // useEffect(() => {
-  //   fetchProjects();
-  // }, []);
-
-  // const fetchProjects = async () => {
-  //   try {
-  //     const res = await axios.get(API_URL);
-  //     setProjects(res.data);
-  //   } catch (error) {
-  //     console.error('Error fetching projects:', error);
-  //   }
-  // };
+  // Fetch Projects
   useEffect(() => {
     fetchProjects();
+    // eslint-disable-next-line
   }, []);
 
   const fetchProjects = async () => {
     try {
-      const res = await api.get('/projects');
-      setProjects(res.data);
+      const res = await fetch(`${API_BASE_URL}/projects`, {
+        credentials: 'include'
+      });
+      if (!res.ok) throw new Error('Failed to fetch projects');
+      const data = await res.json();
+      setProjects(Array.isArray(data) ? data : []);
     } catch (error) {
       console.error('Error fetching projects:', error);
+      setProjects([]);
     }
   };
 
@@ -77,19 +71,16 @@ const Dashboard = () => {
     });
   };
 
-  // const handleUpdate = async () => {
-  //   try {
-  //     await axios.put(`${API_URL}/${selectedProject.id}`, formData);
-  //     setEditing(false);
-  //     fetchProjects();
-  //     setSelectedProject({ ...selectedProject, ...formData });
-  //   } catch (err) {
-  //     console.error('Error updating project:', err);
-  //   }
-  // };
+  // Update Project
   const handleUpdate = async () => {
     try {
-      await api.put(`/projects/${selectedProject.id}`, formData);
+      const res = await fetch(`${API_BASE_URL}/projects/${selectedProject.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify(formData)
+      });
+      if (!res.ok) throw new Error('Update failed');
       setEditing(false);
       fetchProjects();
       setSelectedProject({ ...selectedProject, ...formData });
@@ -98,20 +89,15 @@ const Dashboard = () => {
     }
   };
 
-  // const deleteProject = async (id, publicId) => {
-  //   if (!window.confirm('Are you sure you want to delete this project?')) return;
-  //   try {
-  //     await axios.delete(`${API_URL}/${id}`, { data: { publicId } });
-  //     fetchProjects();
-  //     closeProjectDetail();
-  //   } catch (err) {
-  //     console.error('Error deleting project:', err);
-  //   }
-  // };
-  const deleteProject = async (id, publicId) => {
+  // Delete Project
+  const deleteProject = async (id) => {
     if (!window.confirm('Are you sure you want to delete this project?')) return;
     try {
-      await api.delete(`/projects/${id}`);  // publicId not needed in body
+      const res = await fetch(`${API_BASE_URL}/projects/${id}`, {
+        method: 'DELETE',
+        credentials: 'include'
+      });
+      if (!res.ok) throw new Error('Delete failed');
       fetchProjects();
       closeProjectDetail();
     } catch (err) {
@@ -120,9 +106,7 @@ const Dashboard = () => {
   };
 
   return (
-   
     <Box className="dashboard-root">
-       
       <Typography variant="h4" className="dashboard-main-title">My Projects</Typography>
       <hr className='HR-LINE'></hr>
       <Grid container spacing={4}>
@@ -155,7 +139,7 @@ const Dashboard = () => {
               <CardContent className="project-card-content">
                 <Typography variant="h6" className="project-card-title">{project.title}</Typography>
                 <Typography variant="body2" color="textSecondary" className="project-card-description">
-                  {project.description.length > 90
+                  {project.description && project.description.length > 90
                     ? project.description.slice(0, 90) + '...'
                     : project.description}
                 </Typography>
@@ -264,7 +248,7 @@ const Dashboard = () => {
                 variant="outlined"
                 color="error"
                 startIcon={<Delete />}
-                onClick={() => deleteProject(selectedProject.id, selectedProject.publicId)}
+                onClick={() => deleteProject(selectedProject.id)}
               >
                 Delete
               </Button>
