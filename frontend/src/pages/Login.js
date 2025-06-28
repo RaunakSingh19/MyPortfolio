@@ -1,127 +1,135 @@
-// import React, { useState } from "react";
-// import axios from "axios";
-// import '../stylesheets/Auth.css'
-
-// const Login = () => {
-//   const [email, setEmail] = useState('');
-//   const [password, setPassword] = useState('');
-//   const [message, setMessage] = useState('');
-//   const [error, setError] = useState(false);
-
-//   const handleLogin = async (e) => {
-//     e.preventDefault();
-//     setMessage('');
-//     setError(false);
-
-//     try {
-//       const res = await axios.post(
-//         'https://your-backend-url.com/api/auth/login', // Replace with actual endpoint
-//         { email, password },
-//         { withCredentials: true }
-//       );
-
-//       if (res.status === 200) {
-//         setMessage('Login successful!');
-//         setError(false);
-//         // Optional: redirect or store token
-//       }
-//     } catch (err) {
-//       setMessage('Login failed. Please check your credentials.');
-//       setError(true);
-//     }
-//   };
-
-//   return (
-//     <div className="auth-container">
-//       <h2 className="auth-title">Login to Your Account</h2>
-
-//       <form className="auth-form" onSubmit={handleLogin}>
-//         <input
-//           className="auth-input"
-//           type="email"
-//           placeholder="Email"
-//           value={email}
-//           onChange={(e) => setEmail(e.target.value)}
-//           required
-//         />
-
-//         <input
-//           className="auth-input"
-//           type="password"
-//           placeholder="Password"
-//           value={password}
-//           onChange={(e) => setPassword(e.target.value)}
-//           required
-//         />
-
-//         <button type="submit" className="auth-button">
-//           Login
-//         </button>
-
-//         {message && (
-//           <div className={`auth-message ${error ? 'error-message' : 'success-message'}`}>
-//             {message}
-//           </div>
-//         )}
-//       </form>
-
-//       <div className="auth-footer">
-//         Don’t have an account?
-//         <a href="/register" className="auth-link">Register</a>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Login;
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../stylesheets/Auth.css';
 
+// Caesar cipher encryption with shift 19
+const SHIFT_KEY = 19;
+const ORIGINAL_PASSWORD = 'raunak&raunak';
 const STATIC_EMAIL = 'raunaksingh@gmail.com';
-const STATIC_PASSWORD = 'raunak.raunak';
+
+const encrypt = (text) => {
+  return text
+    .split('')
+    .map((char) => {
+      if (/[a-z]/.test(char)) {
+        // Lowercase
+        return String.fromCharCode(((char.charCodeAt(0) - 97 + SHIFT_KEY) % 26) + 97);
+      } else if (/[A-Z]/.test(char)) {
+        // Uppercase
+        return String.fromCharCode(((char.charCodeAt(0) - 65 + SHIFT_KEY) % 26) + 65);
+      } else {
+        // Special characters unchanged
+        return char;
+      }
+    })
+    .join('');
+};
+
+const ENCRYPTED_PASSWORD = encrypt(ORIGINAL_PASSWORD);
 
 const Login = () => {
+  const [step, setStep] = useState(1);
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [inputPassword, setInputPassword] = useState('');
+  const [secondPassword, setSecondPassword] = useState('');
+  const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  // First step - email and password
+  const handleFirstSubmit = (e) => {
     e.preventDefault();
-    if (email === STATIC_EMAIL && password === STATIC_PASSWORD) {
-      localStorage.setItem('isLoggedIn', 'true');
-      navigate('/dashboard');
+    if (email === STATIC_EMAIL && encrypt(inputPassword) === ENCRYPTED_PASSWORD) {
+      setStep(2);
+      setMessage('');
+      setInputPassword('');
     } else {
-      setError('Invalid email or password');
+      setMessage('❌ Invalid email or password');
+      setInputPassword('');
     }
+  };
+
+  // Second step - secondary password
+  const handleSecondSubmit = (e) => {
+    e.preventDefault();
+    if (secondPassword === 'access') {
+      localStorage.setItem('isLoggedIn', 'true');
+      setStep(3);
+      setMessage('');
+    } else {
+      setMessage('❌ Wrong secondary password');
+      setSecondPassword('');
+    }
+  };
+
+  const redirectTo = (path) => {
+    navigate(path);
   };
 
   return (
     <div className="auth-container">
-      <h2 className="auth-title">Admin Login</h2>
-      <form className="auth-form" onSubmit={handleSubmit}>
-        <input
-          className="auth-input"
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          required
-        />
-        <input
-          className="auth-input"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          required
-        />
-        {error && <div className="auth-message error-message">{error}</div>}
-        <button type="submit" className="auth-button">
-          Login
-        </button>
-      </form>
+      <h2 className="auth-title">🔒 Admin Login</h2>
+
+      {step === 1 && (
+        <form className="auth-form" onSubmit={handleFirstSubmit}>
+          <input
+            className="auth-input"
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            required
+            autoFocus
+          />
+          <input
+            className="auth-input"
+            type="password"
+            placeholder="Password"
+            value={inputPassword}
+            onChange={e => setInputPassword(e.target.value)}
+            required
+          />
+          <button type="submit" className="auth-button">
+            Continue
+          </button>
+        </form>
+      )}
+
+      {step === 2 && (
+        <form className="auth-form" onSubmit={handleSecondSubmit}>
+          <input
+            className="auth-input"
+            type="password"
+            placeholder="Enter Verification Code"
+            value={secondPassword}
+            onChange={e => setSecondPassword(e.target.value)}
+            required
+            autoFocus
+          />
+          <button type="submit" className="auth-button">
+            Verify
+          </button>
+        </form>
+      )}
+
+      {step === 3 && (
+        <div className="auth-options">
+          <p className="auth-success-message">✅ Login Successful</p>
+          <button 
+            className="auth-option-button" 
+            onClick={() => redirectTo('/admin')}
+          >
+            Go to Admin Panel
+          </button>
+          <button 
+            className="auth-option-button" 
+            onClick={() => redirectTo('/dashboard')}
+          >
+            Go to Dashboard
+          </button>
+        </div>
+      )}
+
+      {message && <div className="auth-message error-message">{message}</div>}
     </div>
   );
 };

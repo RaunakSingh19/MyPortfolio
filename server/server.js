@@ -1,6 +1,5 @@
 // require('dotenv').config();
 
-// // Add this right after require('dotenv').config();
 // console.log('Checking environment variables...');
 // console.log('MONGO_URI:', process.env.MONGO_URI ? 'Present' : 'Missing');
 // console.log('CLOUDINARY_CLOUD_NAME:', process.env.CLOUDINARY_CLOUD_NAME || 'Missing');
@@ -11,9 +10,8 @@
 // const mongoose = require('mongoose');
 // const cors = require('cors');
 // const projectRoutes = require('./routes/projectRoutes');
-
 // const cookieParser = require('cookie-parser');
-// const authRoutes = require('./routes/authRoutes');
+// // const authRoutes = require('./routes/authRoutes');
 
 // const app = express();
 
@@ -26,28 +24,20 @@
 //   process.exit(1);
 // }
 
-// // Enhanced CORS configuration
-// // app.use(cors({
-// //   origin: process.env.FRONTEND_URL || ['http://localhost:3000','http://localhost:5173'],
-// //   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-// //   allowedHeaders: ['Content-Type', 'Authorization'],
-// //   credentials: true
-// // }));
+// // ✅ Updated CORS configuration
+// const allowedOrigins = [
+//   "http://localhost:3000",
+//   "http://localhost:5173"
+// ];
 
 // app.use(cors({
-//   origin: process.env.FRONTEND_URL || ['https://my-portfolio-five-mu-95.vercel.app','http://localhost:3000', 'http://localhost:5173'],
-//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-//   allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token'],
-//   credentials: true,
-//   exposedHeaders: ['x-auth-token']
+//   origin: 'https://my-portfolio-five-nu-95.vercel.app',
+//   credentials: true
 // }));
-
 
 // app.use(express.json({ limit: '15mb' }));
 // app.use(express.urlencoded({ extended: true, limit: '15mb' }));
 // app.use(cookieParser());
-// // app.use(cookieParser()); // After express.json()
-
 
 // // API documentation endpoint
 // app.get('/api', (req, res) => {
@@ -71,15 +61,12 @@
 
 // // API routes
 // app.use('/api/projects', projectRoutes);
-// app.use('/api/auth', authRoutes);
-
+// // app.use('/api/auth', authRoutes);
 
 // // 404 handler
 // app.use((req, res) => {
 //   res.status(404).json({ error: 'Endpoint not found' });
 // });
-
-// // app.use('/api/auth', authRoutes);
 
 // // Error handling middleware
 // app.use((err, req, res, next) => {
@@ -89,7 +76,6 @@
 //     ...(process.env.NODE_ENV === 'development' && { stack: err.stack })
 //   });
 // });
-
 
 // mongoose.connect(process.env.MONGO_URI, {
 //   useNewUrlParser: true,
@@ -101,7 +87,6 @@
 //   console.error('❌ MongoDB connection error:', err.message);
 //   console.log('Attempted to connect to:', process.env.MONGO_URI);
 // });
-
 
 // const PORT = process.env.PORT || 5000;
 // const server = app.listen(PORT, () => {
@@ -119,85 +104,52 @@
 //     });
 //   });
 // });
+
 require('dotenv').config();
-
-console.log('Checking environment variables...');
-console.log('MONGO_URI:', process.env.MONGO_URI ? 'Present' : 'Missing');
-console.log('CLOUDINARY_CLOUD_NAME:', process.env.CLOUDINARY_CLOUD_NAME || 'Missing');
-console.log('CLOUDINARY_API_KEY:', process.env.CLOUDINARY_API_KEY ? 'Present' : 'Missing');
-console.log('CLOUDINARY_API_SECRET:', process.env.CLOUDINARY_API_SECRET ? 'Present' : 'Missing');
-
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const projectRoutes = require('./routes/projectRoutes');
 const cookieParser = require('cookie-parser');
-// const authRoutes = require('./routes/authRoutes');
+
+const projectRoutes = require('./routes/projectRoutes');
+// const authRoutes = require('./routes/authRoutes'); // Uncomment if auth is needed
 
 const app = express();
 
-// Verify required environment variables
-const requiredEnvVars = ['MONGO_URI', 'CLOUDINARY_CLOUD_NAME', 'CLOUDINARY_API_KEY', 'CLOUDINARY_API_SECRET'];
-const missingVars = requiredEnvVars.filter(v => !process.env[v]);
+// ========== Environment Variable Checks ==========
+const requiredEnv = ['MONGO_URI', 'CLOUDINARY_CLOUD_NAME', 'CLOUDINARY_API_KEY', 'CLOUDINARY_API_SECRET'];
+const missing = requiredEnv.filter((key) => !process.env[key]);
 
-if (missingVars.length > 0) {
-  console.error('❌ Missing required environment variables:', missingVars.join(', '));
+if (missing.length > 0) {
+  console.error(`❌ Missing required environment variables: ${missing.join(', ')}`);
   process.exit(1);
 }
 
-// ✅ Updated CORS configuration
-const allowedOrigins = [
-  "https://my-portfolio-five-nu-95.vercel.app",
-  "https://my-portfolio-hwqp.vercel.app",
-  "https://my-portfolio-i4hs8jesg-raunaksingh142004-gmailcoms-projects.vercel.app",
-  "http://localhost:3000",
-  "http://localhost:5173"
-];
+// ========== Middleware ==========
+const allowedOrigins = ['http://localhost:3000', 'http://localhost:5173'];
+
+// app.use(cors({
+//   origin: allowedOrigins,
+//   credentials: true
+// }));
 
 app.use(cors({
-  origin: 'https://my-portfolio-five-nu-95.vercel.app',
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
-// app.use(cors({
-//   origin: function (origin, callback) {
-//     // allow requests with no origin (like mobile apps or curl requests)
-//     if (!origin || allowedOrigins.includes(origin)) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error("Not allowed by CORS"));
-//     }
-//   },
-//   credentials: true
-// }));
 
-// app.use(cors({
-//   origin: function (origin, callback) {
-//     if (!origin || allowedOrigins.includes(origin)) {
-//       callback(null, true);
-//     } else {
-//       console.error(`❌ Not allowed by CORS: ${origin}`);
-//       callback(new Error("Not allowed by CORS"));
-//     }
-//   },
-//   credentials: true
-// }));
-// app.use(cors({
-//   origin: function (origin, callback) {
-//     if (!origin || allowedOrigins.includes(origin)) {
-//       callback(null, true);
-//     } else {
-//       console.error(`❌ Not allowed by CORS: ${origin}`);
-//       callback(new Error("Not allowed by CORS"));
-//     }
-//   },
-//   credentials: true
-// }));
 
 app.use(express.json({ limit: '15mb' }));
 app.use(express.urlencoded({ extended: true, limit: '15mb' }));
 app.use(cookieParser());
 
-// API documentation endpoint
+// ========== Routes ==========
 app.get('/api', (req, res) => {
   res.json({
     message: "Portfolio API",
@@ -209,52 +161,53 @@ app.get('/api', (req, res) => {
   });
 });
 
-// Health check endpoint
 app.get('/', (req, res) => {
-  res.status(200).json({ 
+  res.status(200).json({
     status: 'OK',
     db: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected'
   });
 });
 
-// API routes
 app.use('/api/projects', projectRoutes);
-// app.use('/api/auth', authRoutes);
+// app.use('/api/auth', authRoutes); // Enable if needed
 
-// 404 handler
+// ========== 404 Handler ==========
 app.use((req, res) => {
   res.status(404).json({ error: 'Endpoint not found' });
 });
 
-// Error handling middleware
+// ========== Error Handler ==========
 app.use((err, req, res, next) => {
-  console.error('Server error:', err);
+  console.error('❌ Server error:', err);
   res.status(err.status || 500).json({
     error: err.message || 'Internal Server Error',
     ...(process.env.NODE_ENV === 'development' && { stack: err.stack })
   });
 });
 
+// ========== MongoDB Connection ==========
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   serverSelectionTimeoutMS: 5000
 })
-.then(() => console.log('✅ MongoDB connected successfully'))
-.catch(err => {
-  console.error('❌ MongoDB connection error:', err.message);
-  console.log('Attempted to connect to:', process.env.MONGO_URI);
-});
+  .then(() => console.log('✅ MongoDB connected successfully'))
+  .catch((err) => {
+    console.error('❌ MongoDB connection failed:', err.message);
+    console.error('Tried URI:', process.env.MONGO_URI);
+    process.exit(1);
+  });
 
+// ========== Start Server ==========
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`🔗 API Base URL: http://localhost:${PORT}/api`);
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log(`📡 API available at http://localhost:${PORT}/api`);
 });
 
-// Handle server shutdown gracefully
+// ========== Graceful Shutdown ==========
 process.on('SIGTERM', () => {
-  console.log('SIGTERM received. Shutting down gracefully...');
+  console.log('SIGTERM received. Closing server...');
   server.close(() => {
     mongoose.connection.close(false, () => {
       console.log('MongoDB connection closed');
@@ -262,4 +215,3 @@ process.on('SIGTERM', () => {
     });
   });
 });
-

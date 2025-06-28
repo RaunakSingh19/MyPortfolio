@@ -10,8 +10,9 @@ import ButtonComponent from "../components/ButtonComponent";
 const NAV_LINKS = [
   { label: "ABOUT", path: "/about" },
   { label: "PROJECTS", path: "/projects" },
-  { label: "DASHBOARD", path: "/dashboard" },
   { label: "CONTACT", path: "/contact" },
+  { label: "BLOG", path: "/Blog" },
+  
   //  { label: "FEEDBACK", path: "/feedbackform" },
 ];
 
@@ -20,7 +21,7 @@ const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const handleJoinNowClick = () => {
-    navigate("/Admin");
+    navigate("/login");
     setDrawerOpen(false);
   };
 
@@ -41,7 +42,7 @@ const Navbar = () => {
 
       {/* Desktop Button */}
       <Stack direction="row" alignItems="center" spacing={2} className="nav-cta">
-        <ButtonComponent label="Admin" onClick={handleJoinNowClick} />
+        <ButtonComponent label="Login" onClick={handleJoinNowClick} />
       </Stack>
 
       {/* Hamburger Menu Icon for Mobile */}

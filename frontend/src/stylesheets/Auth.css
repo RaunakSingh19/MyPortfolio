@@ -113,3 +113,61 @@
 .auth-container {
   animation: fadeIn 0.4s ease-out forwards;
 }
+.auth-options {
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(30, 30, 30, 0.8);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+}
+
+.auth-success-message {
+  color: #4ade80;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.auth-option-button {
+  width: 100%;
+  padding: 12px 16px;
+  margin: 0.5rem 0;
+  background: rgba(99, 102, 241, 0.9);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.auth-option-button:hover {
+  background: rgba(99, 102, 241, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+.auth-option-button:active {
+  transform: translateY(0);
+}
+
+.auth-option-button:first-of-type {
+  margin-top: 0;
+}
+
+.auth-option-button:last-of-type {
+  margin-bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  color: #e0e0e0;
+}
+
+.auth-option-button:last-of-type:hover {
+  background: rgba(255, 255, 255, 0.15);
+}

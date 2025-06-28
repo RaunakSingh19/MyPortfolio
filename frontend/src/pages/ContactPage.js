@@ -17,9 +17,9 @@ const ContactPage = () => {
 
           <div className="contact-details">
             <p>📧 <strong>Email:</strong> <a href="mailto:raunaksingh142004@gmail.com">raunaksingh142004@gmail.com</a></p>
-            <p>📱 <strong>Phone:</strong> <a href="tel:+918005600968">+91 80056 00968</a></p>
-            <p>✈️ <strong>Telegram:</strong> <a href="https://t.me/yourtelegram" target="_blank" rel="noopener noreferrer">@yourtelegram</a></p>
-            <p>📸 <strong>Instagram:</strong> <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener noreferrer">@yourhandle</a></p>
+            <p>📱 <strong>Phone:</strong> <a href="tel:+91 9819689221">+91 9819689221</a></p>
+            <p>✈️ <strong>Telegram:</strong> <a href="https://t.me/@Raunak1912" target="_blank" rel="noopener noreferrer">@Raunak1912</a></p>
+            <p>📸 <strong>Instagram:</strong> <a href="https://instagram.com/dilauted" target="_blank" rel="noopener noreferrer">@dilauted</a></p>
             <p>📍 <strong>Address:</strong> Swastika Residency, Done Road, Vangani (421503)</p>
             <p>🏙️ <strong>City:</strong> Thane, Mumbai, India</p>
           </div>

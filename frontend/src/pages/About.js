@@ -158,7 +158,7 @@ const About = () => {
               </div>
               <p className="institution">
                 CHM College, Mumbai &mdash;{" "}
-                <span className="highlight">CGPA: 8.20</span>
+                <span className="highlight">CGPA: 8.00</span>
               </p>
               <div className="coursework">
                 <h4>Key Coursework:</h4>
