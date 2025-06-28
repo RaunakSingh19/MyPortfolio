@@ -171,3 +171,92 @@
 .auth-option-button:last-of-type:hover {
   background: rgba(255, 255, 255, 0.15);
 }
+.auth-background {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #000000, #24243b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Particle-style background with floating dots */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  z-index: -1;
+}
+
+.particles li {
+  position: absolute;
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.904);
+  animation: animate 6s linear infinite;
+  bottom: -150px;
+  border-radius: 50%;
+}
+
+.particles li:nth-child(1) {
+  left: 25%;
+  width: 20px;
+  height: 20px;
+  animation-duration: 9s;
+}
+
+.particles li:nth-child(2) {
+  left: 10%;
+  animation-duration: 4s;
+}
+
+.particles li:nth-child(3) {
+  left: 70%;
+  animation-duration: 8s;
+}
+
+.particles li:nth-child(4) {
+  left: 40%;
+  width: 12px;
+  height: 12px;
+  animation-duration: 6s;
+}
+.particles li:nth-child(4) {
+  left: 35%;
+  width: 20px;
+  height: 20px;
+  animation-duration: 4s;
+}
+
+.particles li:nth-child(5) {
+  left: 65%;
+  animation-duration: 11s;
+}
+
+.particles li:nth-child(6) {
+  left: 75%;
+  animation-duration: 5s;
+}
+.particles li:nth-child(7) {
+  left: 80%;
+  animation-duration: 7s;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+  }
+}
