@@ -18,10 +18,10 @@ const ContactPage = () => {
           <div className="contact-details">
             <p>📧 <strong>Email:</strong> <a href="mailto:raunaksingh142004@gmail.com">raunaksingh142004@gmail.com</a></p>
             <p>📱 <strong>Phone:</strong> <a href="tel:+91 9819689221">+91 9819689221</a></p>
-            <p>✈️ <strong>Telegram:</strong> <a href="https://t.me/@Raunak1912" target="_blank" rel="noopener noreferrer">@Raunak1912</a></p>
-            <p>📸 <strong>Instagram:</strong> <a href="https://instagram.com/dilauted" target="_blank" rel="noopener noreferrer">@dilauted</a></p>
+            <p>✈️ <strong>Telegram:</strong> <a href="https://t.me/@Raunak1912" target="_blank" rel="noopener noreferrer">Raunak Singh</a></p>
+            <p>📸 <strong>Instagram:</strong> <a href="https://instagram.com/dilauted" target="_blank" rel="noopener noreferrer">Dilauted</a></p>
              <p>🐦 <strong>Twitter:</strong> <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener noreferrer">@yourhandle</a></p>
-  <p>💼 <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">Your Name</a></p>
+            <p>💼 <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/raunaksingh19" target="_blank" rel="noopener noreferrer">Raunak</a></p>
             <p>📍 <strong>Address:</strong> Swastika Residency, Done Road, Vangani (421503)</p>
             <p>🏙️ <strong>City:</strong> Thane, Mumbai, India</p>
             
