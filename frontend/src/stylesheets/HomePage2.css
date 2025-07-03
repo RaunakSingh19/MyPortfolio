@@ -1,5 +1,5 @@
 :root {
-  --primary: #;
+  --primary: #6366f1; /* Set a primary color */
   --dark-bg: #000000;
   --card-bg: rgba(255, 255, 255, 0.06);
   --text-main: #f1f5f9;
@@ -28,18 +28,18 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 3rem;
-  flex: 1;
   max-width: 1200px;
   margin: auto;
   width: 100%;
+  flex: 1;
 }
 
 .home-text {
-  flex: 1;
+  flex: 1 1 350px;
   display: flex;
   flex-direction: column;
   gap: 1.8rem;
-  min-width: 290px;
+  min-width: 230px;
 }
 
 .badge-wrapper {
@@ -72,17 +72,11 @@ body {
   margin: 0;
 }
 
-.highlight-home{
+.highlight-home {
   margin-top: 5%;
   margin-bottom: 5%;
   color: #fff;
   font-size: larger;
-  /* 
-  background: var(--dark-bg);
-backdrop-filter: var(--glass-blur);
-  padding: 1.0rem 1.05rem;
-  border-radius: 0.6rem;
-  border: 1px solid rgba(255, 255, 255, 0.09); */
 }
 
 .highlight-name {
@@ -159,11 +153,13 @@ backdrop-filter: var(--glass-blur);
 }
 
 .home-image {
-  flex: 1;
+  flex: 1 1 250px;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 250px;
+  min-width: 180px;
+  max-width: 500px;
+  width: 100%;
 }
 
 .glass-card {
@@ -221,7 +217,7 @@ backdrop-filter: var(--glass-blur);
   60% { transform: rotate(45deg) translateY(-4px); }
 }
 
-/* Responsive Design */
+/* Tablet responsiveness */
 @media (max-width: 1024px) {
   .home-content {
     flex-direction: column;
@@ -230,18 +226,35 @@ backdrop-filter: var(--glass-blur);
   }
   .home-image {
     margin-top: 2.5rem;
+    max-width: 320px;
   }
   .headline {
     font-size: 2rem;
   }
 }
 
+/* Large mobile/small tablet */
+@media (max-width: 800px) {
+  .home-container {
+    padding: 2.2rem 3vw 3rem 3vw;
+  }
+  .home-content {
+    gap: 1.5rem;
+  }
+  .glass-card {
+    max-width: 350px;
+    padding: 1.2rem;
+    border-radius: 1.2rem;
+  }
+}
+
+/* Mobile responsiveness */
 @media (max-width: 640px) {
   .home-container {
-    padding: 2.4rem 3vw 3.5rem 3vw;
+    padding: 1.1rem 1vw 2rem 1vw;
   }
   .headline {
-    font-size: 1.35rem;
+    font-size: 1.28rem;
   }
   .summary {
     font-size: 1rem;
@@ -256,10 +269,35 @@ backdrop-filter: var(--glass-blur);
     font-size: 1rem;
   }
   .glass-card {
-    padding: 1rem;
-    border-radius: 1rem;
+    padding: 0.8rem;
+    border-radius: 0.7rem;
   }
   .scroll-down {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
+    bottom: 1.1rem;
+  }
+  .profile-pic {
+    border-radius: 0.55rem;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 430px) {
+  .home-container {
+    padding: 0.5rem 0.4vw 1rem 0.4vw;
+  }
+  .home-text {
+    gap: 1.1rem;
+  }
+  .headline {
+    font-size: 1.05rem;
+  }
+  .btn, .btn-group {
+    font-size: 0.98rem;
+    gap: 0.4rem;
+  }
+  .glass-card {
+    padding: 0.5rem;
+    border-radius: 0.38rem;
   }
 }

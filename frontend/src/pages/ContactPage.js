@@ -1,7 +1,6 @@
 import React from "react";
 import "../stylesheets/ContactPage.css";
-import ProfileImage from "../assets/images/mypic4.jpg"; // Replace with your actual image file
-
+import ProfileImage from "../assets/images/mypic2.jpg";
 const ContactPage = () => {
   return (
     <div className="contact-container">
@@ -33,6 +32,8 @@ const ContactPage = () => {
         </div>
       </div>
       <hr></hr>
+      {/* <DigitalBusinessCard />
+      <hr></hr> */}
 
       <div className="contact-map-wrapper">
         <iframe

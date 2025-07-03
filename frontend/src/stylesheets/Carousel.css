@@ -136,30 +136,85 @@
   transform: scale(1.2);
 }
 
+/* Tablet */
 @media (max-width: 900px) {
   .react-swiper-wrapper {
     min-height: 320px;
+    gap: 12px;
   }
   .react-swiper-slide {
-    width: 250px;
-    height: 310px;
+    width: 240px;
+    height: 295px;
+  }
+  .slide-content {
+    padding: 0 15px 22px;
   }
 }
 
-@media (max-width: 600px) {
+/* Large Mobile */
+@media (max-width: 700px) {
+  .react-swiper {
+    padding: 28px 0 32px 0;
+  }
+  .react-swiper-wrapper {
+    min-height: 200px;
+    gap: 8px;
+  }
   .react-swiper-slide {
-    width: 90vw;
-    height: 250px;
-    margin: 0 7px;
+    width: 94vw;
+    max-width: 360px;
+    height: 220px;
+    margin: 0 4px;
+    border-radius: 10px;
   }
-  
+  .slide-content {
+    padding: 0 10px 16px;
+  }
+  .carousel-controls {
+    padding: 0 3vw;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .react-swiper {
+    max-width: 99vw;
+    padding: 17px 0 22px 0;
+  }
+  .react-swiper-slide {
+    width: 96vw;
+    max-width: 99vw;
+    height: 160px;
+    min-width: 0;
+    border-radius: 7px;
+  }
+  .slide-content {
+    padding: 0 7px 10px;
+    font-size: 0.95rem;
+  }
   .carousel-btn {
-    width: 36px;
-    height: 36px;
+    width: 30px;
+    height: 30px;
   }
-  
   .carousel-btn svg {
-    width: 18px;
-    height: 18px;
+    width: 15px;
+    height: 15px;
+  }
+  .location-text {
+    font-size: 0.95rem;
+  }
+  .location-icon {
+    width: 14px;
+    height: 14px;
+    margin-right: 5px;
+  }
+  .react-swiper-pagination {
+    gap: 6px;
+    margin-top: 12px;
+  }
+  .swiper-pagination-bullet,
+  .swiper-pagination-bullet-active {
+    width: 8px;
+    height: 8px;
   }
 }

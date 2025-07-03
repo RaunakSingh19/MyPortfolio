@@ -1,93 +1,86 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Box, Stack, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close";
 import GymLogo from "../assets/images/logo/logo.png";
-import "../stylesheets/Navbar.css";
 import ButtonComponent from "../components/ButtonComponent";
+import "../stylesheets/Navbar.css";
 
 const NAV_LINKS = [
   { label: "ABOUT", path: "/about" },
   { label: "PROJECTS", path: "/projects" },
   { label: "CONTACT", path: "/contact" },
   { label: "BLOG", path: "/Blog" },
-  
-  //  { label: "FEEDBACK", path: "/feedbackform" },
 ];
 
 const Navbar = () => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate();
-  const [drawerOpen, setDrawerOpen] = useState(false);
 
-  const handleJoinNowClick = () => {
+  const handleLogin = () => {
     navigate("/login");
-    setDrawerOpen(false);
+    setSidebarOpen(false);
   };
 
   return (
-    <Box className="navbar-root">
-      <Link to="/" className="nav-logo">
-        <img src={GymLogo} alt="Logo" className="logo" />
-      </Link>
+    <>
+      <nav className="navbar-root">
+        {/* Logo */}
+        <Link to="/" className="nav-logo">
+          <img src={GymLogo} alt="Logo" className="logo" />
+        </Link>
 
-      {/* Desktop Links */}
-      <Stack direction="row" spacing={3} className="nav-links">
-        {NAV_LINKS.map(link => (
-          <Link key={link.path} to={link.path} className="nav-link">
-            {link.label}
-          </Link>
-        ))}
-      </Stack>
-
-      {/* Desktop Button */}
-      <Stack direction="row" alignItems="center" spacing={2} className="nav-cta">
-        <ButtonComponent label="Login" onClick={handleJoinNowClick} />
-      </Stack>
-
-      {/* Hamburger Menu Icon for Mobile */}
-      <IconButton
-        className="menu-icon"
-        edge="end"
-        color="inherit"
-        aria-label="menu"
-        onClick={() => setDrawerOpen(true)}
-        sx={{ display: { xs: "block", md: "none" } }}
-      >
-        <MenuIcon />
-      </IconButton>
-
-      {/* Sidebar Drawer for Mobile */}
-      <Drawer
-        anchor="right"
-        open={drawerOpen}
-        onClose={() => setDrawerOpen(false)}
-        PaperProps={{
-          sx: { width: 250, backgroundColor: "#fff" },
-        }}
-      >
-        <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", px: 2, py: 2 }}>
-          <img src={GymLogo} alt="Logo" style={{ height: 40 }} />
-          <IconButton onClick={() => setDrawerOpen(false)}>
-            <CloseIcon />
-          </IconButton>
-        </Box>
-        <List>
+        {/* Desktop Nav Links */}
+        <div className="nav-links">
           {NAV_LINKS.map(link => (
-            <ListItem key={link.path} disablePadding>
-              <ListItemButton component={Link} to={link.path} onClick={() => setDrawerOpen(false)}>
-                <ListItemText primary={link.label} />
-              </ListItemButton>
-            </ListItem>
+            <Link key={link.path} to={link.path} className="nav-link">
+              {link.label}
+            </Link>
           ))}
-          <ListItem disablePadding>
-            <ListItemButton onClick={handleJoinNowClick}>
-              <ListItemText primary="Admin" />
-            </ListItemButton>
-          </ListItem>
-        </List>
-      </Drawer>
-    </Box>
+        </div>
+
+        {/* Desktop CTA */}
+        <div className="nav-cta">
+          <ButtonComponent label="Login" onClick={handleLogin} />
+        </div>
+
+        {/* Hamburger Icon */}
+        <button
+          className="menu-icon"
+          aria-label="Open navigation menu"
+          onClick={() => setSidebarOpen(true)}
+        >
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+        </button>
+      </nav>
+
+      {/* Sidebar Overlay */}
+      <div
+        className={`sidebar-overlay${sidebarOpen ? " open" : ""}`}
+        onClick={() => setSidebarOpen(false)}
+      ></div>
+
+      {/* Sidebar Menu */}
+      <aside className={`sidebar-menu${sidebarOpen ? " open" : ""}`}>
+        <button className="sidebar-close" onClick={() => setSidebarOpen(false)} aria-label="Close navigation menu">&times;</button>
+        <div className="sidebar-logo">
+          <img src={GymLogo} alt="Logo" style={{ height: 38 }} />
+        </div>
+        <div className="sidebar-links">
+          {NAV_LINKS.map(link => (
+            <Link
+              key={link.path}
+              to={link.path}
+              className="sidebar-link"
+              onClick={() => setSidebarOpen(false)}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <button className="sidebar-link sidebar-btn" onClick={handleLogin}>Admin</button>
+        </div>
+      </aside>
+    </>
   );
 };
 

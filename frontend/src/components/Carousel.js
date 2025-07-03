@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import '../stylesheets/Carousel.css';
 
-import img1 from '../assets/images/mypic1.png';
+import img1 from '../assets/images/mypic2.jpg';
 import img2 from '../assets/images/car-pic.jpg';
 import img3 from '../assets/images/mypic3.jpg';
 import img4 from '../assets/images/mypic4.jpg';

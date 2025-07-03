@@ -1,40 +1,5 @@
-// import React from "react";
-// import "../stylesheets/HomePage.css";
-// // import ProfilePic from "../assets/images/mypic1.png";
-
-// const HomePage = () => {
-// const techStack = [
-//     "JavaScript",
-//     "React/Node.js",
-//     "Python",
-//     "Flutter",
-//     "AWS",
-//     "Docker",
-//     "SQL",
-//     "MongoDB",
-//     "Firebase",
-//     "Debuggin & Troubleshooting"
-//   ];
-//   return (
-// <div><hr></hr><h1>hello</h1>
-//  <div className="stack-wrapper">
-//             {techStack.map((tech, index) => (
-//               <span className="tech-tag" key={index}>
-//                 {tech}
-//               </span>
-//             ))}
-//           </div>
-// </div>
-
-//   );
-// };
-
-// // export default HomePage;
-// export default HomePage;
-
 import React from "react";
 import "../stylesheets/HomePage.css";
-// import ProfilePic from "../assets/images/mypic1.png";
 
 const HomePage = () => {
   const techStack = [
@@ -53,10 +18,6 @@ const HomePage = () => {
   return (
     <div className="homepage-container">
       <hr />
-      {/* 
-  <p className="home-description">
-    Hands on Experience in <b>web & software development <b>Also prior Knowledge in field of networking </b>networking, and DevOps</b>, I enjoy working on innovative and collaborative projects that solve real-world problems.
-  </p> */}
       <p className="home-description">
         {" "}
         With hands-on experience in <b>web and software development</b>, as well
