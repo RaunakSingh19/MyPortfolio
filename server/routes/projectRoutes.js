@@ -95,35 +95,6 @@ router.delete(
   })
 );
 
-// // PUT: Update a project (excluding media)
-// router.put(
-//   '/:id',
-//   asyncHandler(async (req, res) => {
-//     const { title, description, techStack, githubUrl, liveDemo } = req.body;
-
-//     const updatedProject = await Project.findByIdAndUpdate(
-//       req.params.id,
-//       {
-//         title,
-//         description,
-//         techStack: techStack?.split(',').map(t => t.trim()) || [],
-//         githubUrl,
-//         liveDemo,
-//       },
-//       { new: true, runValidators: true }
-//     );
-
-//     if (!updatedProject) {
-//       return res.status(404).json({ error: 'Project not found' });
-//     }
-
-//     res.status(200).json({
-//       message: 'Project updated successfully',
-//       project: updatedProject,
-//     });
-//   })
-// );
-
 router.put('/:id', asyncHandler(async (req, res) => {
   const { title, description, techStack, githubUrl, liveDemo } = req.body;
 
