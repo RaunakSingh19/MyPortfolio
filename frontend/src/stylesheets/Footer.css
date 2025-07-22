@@ -1,8 +1,10 @@
 .footer {
-  background-color: #000;
-  color: #fff;
+  background-color: #afaa9a;
+  color: #000000;
+  font-weight: bold;
   padding: 20px;
   height: 100px;
+  width: 99%;
   text-align: center;
   font-family: Arial, sans-serif;
 }
@@ -22,7 +24,8 @@
 }
 
 .footer-link {
-  color: #ccc;
+  color: #000000;
+  font-weight: bolder;
   margin: 0 15px;
   text-decoration: none;
   font-size: 14px;

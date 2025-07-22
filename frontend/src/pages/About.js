@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import ProfileImg from "../assets/images/mypic3.jpg";
+import ProfileImg from "../assets/images/car-pic.jpg";
 import "../stylesheets/About.css";
 
 const About = () => {
@@ -54,11 +54,10 @@ const About = () => {
                   <b className="highlight">
                     Computer Science Graduate (2025)
                   </b>{" "}
-                  <b className="highlight"> with a passion for  Web & Software Development,{" "}
-                  Networking, and DevOps. </b> <br />
+                  <b className="highlight"> with a passion for  Web Development,{" & "}
+                  Networking. </b> <br />
                   I enjoy crafting clean, scalable applications and working with
                   modern tech stacks that streamline development and operations.
-                  <br />
                   <br />
                   <span className="faded">
                     Recently completed my <b>B.Sc in Computer Science</b>. Eager

@@ -1,8 +1,8 @@
 .contact-container {
   margin-top: 5%;
   padding: 60px 20px;
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #beb7a4;
+  color: #000000;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -33,7 +33,7 @@
 
 .contact-description {
   font-size: 1.1rem;
-  color: #cccccc;
+  color: #000000;
   margin-bottom: 25px;
   line-height: 1.6;
 }
@@ -42,7 +42,7 @@
   margin: 10px 0;
   font-size: 1rem;
   line-height: 1.5;
-  color: #eeeeee;
+  color: #000000;
 }
 
 .contact-details a {

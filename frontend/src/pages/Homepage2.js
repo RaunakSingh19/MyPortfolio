@@ -1,62 +1,56 @@
-import React from 'react';
-import '../stylesheets/HomePage2.css';
-import ProfilePic from "../assets/images/mypic4.jpg";
+import "../stylesheets/HomePage2.css";
+import ProfilePic from "../assets/images/mypic3.1.png"; // PNG with transparent bg
 
 const HomePage = () => {
   return (
-  <div className="home-container">
-      <div className="home-content">
-        {/* Left Section - Text */}
-        <div className="home-text">
-          <div className="badge-wrapper">
-            <span className="badge">FULL-STACK DEVELOPER</span>
-            <span className="badge">DEVOPS | CCNA</span>
-          </div>
+    <div className="hero-banner">
+      {/* Large Portfolio text in background */}
+      <div className="portfolio-bg-text">PORTFOLIO</div>
 
-          <h1 className="headline">
-            Hi, I’m <span className="highlight-name">Raunak Singh</span>
-          </h1>
-
-          <b className="highlight-home">  I’m open to new opportunities and collaboration.</b>       
-          <p className="summary">
-            I build full-stack apps, And having Networking & DevOps skills. Let’s craft
-            scalable, secure tech together.
-          </p>
-
-          <div className="btn-group">
-            <a href="contact" className="btn primary">
-              Get In Touch
-            </a>
-            <a
-              href="https://github.com/RaunakSingh19"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn secondary"
-            >
-              GitHub
-            </a>
-          </div>
+      {/* Left Section: Name, Role, Intro */}
+      <div className="portfolio-left-block">
+        <div className="portfolio-name">
+          Hi, I’m <span className="name">Raunak Singh</span>
         </div>
+        <div className="portfolio-role-stack">
+          <span className="portfolio-role">Full-Stack Developer</span>
+          <span className="portfolio-detail">WEB DEV | <span className="portfolio-detail-italic">CCNA</span></span>
+        </div>
+        {/* If you want to add the intro text back, uncomment below */}
+        
+      </div>
 
-        {/* Right Section - Profile Image */}
-        <div className="home-image">
-          <div className="glass-card">
-            <img
-              src={ProfilePic}
-              alt="Raunak Singh"
-              className="profile-pic"
-            />
-          </div>
+      {/* Center Profile Image */}
+      <div className="portfolio-profile">
+        <img
+          src={ProfilePic}
+          alt="Raunak Singh"
+          className="profile-pic-png"
+        />
+      </div>
+
+      {/* Right Section: Collaboration */}
+      <div className="portfolio-right-block">
+        <div className="portfolio-collab-decorative">
+          Open for Collaboration
+          <br />
+          <span className="portfolio-collab-detail">NETWORKING | DEVELOPER</span>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="scroll-down">
-        <span>Scroll</span>
-        <div className="scroll-arrow" />
-      </div>
+      {/* Bottom Left: Contact */}
+      <div className="portfolio-intro">
+          I build scalable apps and modern tech<br />for real-world problems.
+        </div>
+      {/* <div className="portfolio-contact-block-left">
+        <div className="portfolio-contact-box">
+          Let's connect on <a href="https://github.com/RaunakSingh19" className="portfolio-link">GitHub</a> or <a href="contact" className="portfolio-link">Contact</a>!
+        </div>
+      </div> */}
+      
     </div>
+
   );
 };
 
-export default HomePage;
+export default HomePage; 
