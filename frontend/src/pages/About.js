@@ -169,14 +169,6 @@ const About = () => {
                 </ul>
               </div>
             </div>
-            {/* <div className="certifications">
-              <h3 className="cert-title">Certifications</h3>
-              <div className="cert-badges">
-                <span className="cert-badge">AWS Cloud Practitioner</span>
-                <span className="cert-badge">Docker Certified</span>
-                <span className="cert-badge">CCNA</span>
-              </div>
-            </div> */}
             <div className="interests-social-wrapper">
               <div className="interests">
                 <h3 className="interests-title">Hobbies</h3>

@@ -42,12 +42,6 @@ const HomePage = () => {
       <div className="portfolio-intro">
           I build scalable apps and modern tech<br />for real-world problems.
         </div>
-      {/* <div className="portfolio-contact-block-left">
-        <div className="portfolio-contact-box">
-          Let's connect on <a href="https://github.com/RaunakSingh19" className="portfolio-link">GitHub</a> or <a href="contact" className="portfolio-link">Contact</a>!
-        </div>
-      </div> */}
-      
     </div>
 
   );

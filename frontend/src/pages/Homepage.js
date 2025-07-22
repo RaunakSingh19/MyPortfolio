@@ -1,21 +1,5 @@
 import '../stylesheets/HomePage.css';
 const AboutPage = () => {
-  // const projects = [
-  //   {
-  //     title: "Gym & Fitness Platform",
-  //     tech: "MERN Stack",
-  //     users: "40+ Active Users",
-  //     description: "Full-stack web application with dynamic membership management, custom workout plans, and admin dashboard for tracking user progress and revenue insights.",
-  //     features: ["Diet Planners", "Food Recommendations", "Admin Dashboard", "User Management"]
-  //   },
-  //   {
-  //     title: "Habit Streak Tracker",
-  //     tech: "Flutter",
-  //     users: "25+ Daily Users",
-  //     description: "Cross-platform mobile app for building and tracking healthy habits with intuitive calendar visualization and smooth user interactions.",
-  //     features: ["Zoomable Calendar", "Swipe-based Tracking", "Habit History", "Progress Analytics"]
-  //   }
-  // ];
 
   const education = [
     {

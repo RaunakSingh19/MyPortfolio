@@ -15,7 +15,6 @@ function App() {
 
   return (
     <>
-      {/* You can put your Navbar here if needed */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<ProjectCard />} />
