@@ -9,6 +9,12 @@ import DigitalBusinessCard from './DigitalBusinessCard';
 // import { Import } from 'lucide-react'; 
 
 const Home = () => {
+
+    document.oncontextmenu=()=>{
+    alert("Inspect Feature is desabled")
+    return false
+  }
+  
   return (
     <Box>
       {/* <Navbar /> */}

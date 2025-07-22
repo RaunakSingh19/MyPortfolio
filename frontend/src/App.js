@@ -13,11 +13,6 @@ import BlogDetail from './pages/BlogDetail';
 
 function App() {
 
-  document.oncontextmenu=()=>{
-    alert("Inspect Feature is desabled")
-    return false
-  }
-  
   return (
     <>
       {/* You can put your Navbar here if needed */}
