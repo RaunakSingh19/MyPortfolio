@@ -10,11 +10,11 @@ import DigitalBusinessCard from './DigitalBusinessCard';
 
 const Home = () => {
 
-    document.oncontextmenu=()=>{
-    alert("Inspect Feature is desabled")
-    return false
-  }
-  
+  //   document.oncontextmenu=()=>{
+  //   alert("Inspect Feature is desabled")
+  //   return false
+  // }
+
   return (
     <Box>
       {/* <Navbar /> */}
