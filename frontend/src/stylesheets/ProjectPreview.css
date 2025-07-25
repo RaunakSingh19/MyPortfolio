@@ -1,6 +1,6 @@
 .project-preview-section {
   padding: 3rem 0;
-  background: #e4decf; /* Beige background */
+  background: #e4decf; 
   width: 102%;
 }
 
@@ -8,7 +8,7 @@
   font-size: 2rem;
   font-weight: 700;
   text-align: left;
-  color: #2c2c2c; /* Dark heading */
+  color: #2c2c2c; 
   margin-bottom: 2rem;
   padding-left: 5vw;
   letter-spacing: 0.02em;
