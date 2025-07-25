@@ -19,7 +19,7 @@ if (missing.length > 0) {
 }
 
 // ========== Middleware ==========
-const allowedOrigins = ['https://myportfolio-tuif.onrender.com','http://localhost:3000','https://my-portfolio-five-ashy-23.vercel.app'];
+const allowedOrigins = ['http://localhost:3000','https://my-portfolio-five-ashy-23.vercel.app','my-portfolio-git-main-raunaksingh142004-gmailcoms-projects.vercel.app','my-portfolio-c5bqy7kfc-raunaksingh142004-gmailcoms-projects.vercel.app'];
 
 // app.use(cors({
 //   origin: allowedOrigins,
