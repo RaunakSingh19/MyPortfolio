@@ -48,7 +48,7 @@ const AboutPage = () => {
               <span className="stat-label">CGPA</span>
             </div>
             <div className="stat-item">
-              <span className="stat-number">Freasher</span>
+              <span className="stat-number">Fresher</span>
               <span className="stat-label">Greaduated From CHM College</span>
             </div>
           </div>

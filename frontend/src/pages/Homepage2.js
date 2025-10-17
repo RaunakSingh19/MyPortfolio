@@ -14,7 +14,7 @@ const HomePage = () => {
         </div>
         <div className="portfolio-role-stack">
           <span className="portfolio-role">Full-Stack Developer</span>
-          <span className="portfolio-detail">WEB DEV | <span className="portfolio-detail-italic">CCNA</span></span>
+          <span className="portfolio-detail">WEB | <span className="portfolio-detail-italic">SOFTWARE</span></span>
         </div>
         {/* If you want to add the intro text back, uncomment below */}
         
@@ -34,7 +34,7 @@ const HomePage = () => {
         <div className="portfolio-collab-decorative">
           Open for Collaboration
           <br />
-          <span className="portfolio-collab-detail">NETWORKING | DEVELOPER</span>
+          <span className="portfolio-collab-detail">FREELANCE | DEVELOPER</span>
         </div>
       </div>
 
