@@ -1,5 +1,6 @@
 import React from "react";
 import "../stylesheets/ContactPage.css";
+// import ProfileImage from "../assets/images/car-pic.jpg";
 import ProfileImage from "../assets/images/mypic2.jpg";
 const ContactPage = () => {
   return (

@@ -10,6 +10,7 @@ import ContactPage from "./pages/ContactPage";
 import Login from "./pages/Login";
 import BlogPage from "./pages/BlogPage";
 import BlogDetail from './pages/BlogDetail';
+import "./App.css";
 
 function App() {
 

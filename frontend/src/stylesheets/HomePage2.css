@@ -1,5 +1,6 @@
 .hero-banner {
   position: relative;
+  max-width: 1400px;
   width: 100vw;
   min-height: 100vh;
   background: #beb7a4;
